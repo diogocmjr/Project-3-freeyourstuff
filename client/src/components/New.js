@@ -9,7 +9,6 @@ export default class New extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    console.log('this state', this.state)
     const { title, category, description, condition } = this.state;
     axios.post('/api/items/new', {
       title,
@@ -18,7 +17,6 @@ export default class New extends Component {
       condition
     })
     .then(response => {
-      console.log(response.data);
       this.setState({
         title: '',
         category: '',
