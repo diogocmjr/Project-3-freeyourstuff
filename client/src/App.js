@@ -9,6 +9,8 @@ import Login from './components/Login'
 import Home from './components/Home'
 import New from './components/New'
 import Navbar from './components/Navbar'
+import Dashboard from './components/Dashboard'
+import EditProfile from './components/EditProfile'
 
 class App extends React.Component {
 
@@ -39,6 +41,14 @@ class App extends React.Component {
     return (
       <>
         <Navbar user={this.state.user} setUser={this.setUser}/>
+        <Route exact path='/profile'
+          render={props => <Dashboard items={this.state.items} user={this.state.user} {...props} />}
+        />
+
+        <Route exact path='/profile/edit'
+          render={props => <EditProfile user={this.state.user} {...props} />}
+        />
+
         <Route exact path='/'
           render={props => <Home items={this.state.items} user={this.state.user} setUser={this.setUser} {...props} />}
         />
