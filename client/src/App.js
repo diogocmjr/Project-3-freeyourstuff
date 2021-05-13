@@ -25,7 +25,7 @@ class App extends React.Component {
     axios.get('/api/items')
       .then(response => {
         this.setState({
-          projects: response.data
+          items: response.data
         })
       })
       .catch(err => console.log(err));

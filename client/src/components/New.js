@@ -12,7 +12,6 @@ export default class New extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log('this state', this.state)
     const { title, category, description, condition } = this.state;
     axios.post('/api/items/new', {
       title,
@@ -21,7 +20,6 @@ export default class New extends Component {
       condition
     })
     .then(response => {
-      console.log(response.data);
       this.setState({
         title: '',
         category: '',
@@ -74,7 +72,7 @@ export default class New extends Component {
           onChange={this.handleChange}
         />
         <label htmlFor="condition"></label>
-        <select name="condition" id="condition" value={this.state.condition} onChange={this.handleChange}>
+        <select name="condition" id="condition" onChange={this.handleChange}>
           <option defaultValue> Condition</option>
           <option value="New">New</option>
           <option value="As New">As New</option>
