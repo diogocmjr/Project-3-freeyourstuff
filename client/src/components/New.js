@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 export default class New extends Component {
+
   state = {
     title: '',
     category: '',
     description: '',
+    owner: this.props.user._id,
     condition: ''
   }
+
   handleSubmit = e => {
     e.preventDefault();
     const { title, category, description, condition } = this.state;
@@ -46,19 +49,19 @@ export default class New extends Component {
           value={this.state.title}
           onChange={this.handleChange}
         />
-        <label htmlFor="category">Category:</label>
-        <select name="category" id="category">
-          <option defaultValue> -- select an option -- </option>
-          <option value="books">Books</option>
-          <option value="clothing-accessories">Clothing & Accessories</option>
-          <option value="electronics">Electronics</option>
-          <option value="family-baby">Family & Baby</option>
-          <option value="hobbies">Hobbies</option>
-          <option value="house-garden">House & Garden</option>
-          <option value="music-movies">Music & Movies</option>
-          <option value="pets">Pets</option>
-          <option value="transports">Transports</option>
-          <option value="other">Other</option>
+        <label htmlFor="category"></label>
+        <select name="category" id="category" onChange={this.handleChange}>
+          <option defaultValue> Category </option>
+          <option value="Books">Books</option>
+          <option value="Clothing & Accessories">Clothing & Accessories</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Family & Baby">Family & Baby</option>
+          <option value="Hobbies">Hobbies</option>
+          <option value="House & Garden">House & Garden</option>
+          <option value="Music & Movies">Music & Movies</option>
+          <option value="Pets">Pets</option>
+          <option value="Transports">Transports</option>
+          <option value="Other">Other</option>
         </select>
         <label htmlFor="title">Description: </label>
         <input
@@ -68,13 +71,13 @@ export default class New extends Component {
           value={this.state.description}
           onChange={this.handleChange}
         />
-        <label htmlFor="condition">Condition:</label>
-        <select name="condition" id="condition">
-          <option defaultValue> -- select an option -- </option>
-          <option value="new">New</option>
-          <option value="as-new">As New</option>
-          <option value="used-good">Used - Good</option>
-          <option value="user-fair">User - Fair</option>
+        <label htmlFor="condition"></label>
+        <select name="condition" id="condition" value={this.state.condition} onChange={this.handleChange}>
+          <option defaultValue> Condition</option>
+          <option value="New">New</option>
+          <option value="As New">As New</option>
+          <option value="Used - Good">Used - Good</option>
+          <option value="Used - Fair">User - Fair</option>
         </select>
         <button type="submit">Add new ad</button>
       </form>
