@@ -2,12 +2,17 @@ const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const itemSchema = new Schema({
-  name: String,
+  title: String,
   description: String,
   imgUrl: String,
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+  },
+  condition: {
+    type: String,
+    enum: ['New', 'As New', 'Used - Good', 'Used - Fair'],
+    default: null
   },
   status: {
     type: String,
@@ -17,7 +22,7 @@ const itemSchema = new Schema({
   postedDate: Date,
   category: {
     type: String,
-    enum: ['Transports', 'Electronics', 'Family & Baby', 'House & Garden', 'Pets', 'Clothing & Accessories', 'Books, Music & Movies', 'Hobbies', 'Other'],
+    enum: ['Transports', 'Electronics', 'Family & Baby', 'House & Garden', 'Pets', 'Clothing & Accessories', 'Books', 'Music & Movies', 'Hobbies', 'Other'],
     default: null,
   }
 });
