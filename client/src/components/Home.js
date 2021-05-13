@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
+import Navbar from './Navbar'
+import FilterableItemsList from './FilterableItemsList'
+import { Link } from 'react-router-dom'
 
 export default class Home extends Component {
+
+  
   render() {
     return (
       <div>
-        <h1>Home Page</h1>
+        <Link to='/new'>Add Item</Link>
+        <FilterableItemsList items={this.props.items}/>
       </div>
     )
   }

@@ -1,34 +1,33 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 export default class New extends Component {
-
   state = {
     title: '',
-    category: null,
+    category: '',
     description: '',
-    condition: null
+    condition: ''
   }
-
   handleSubmit = e => {
     e.preventDefault();
+    console.log('this state', this.state)
     const { title, category, description, condition } = this.state;
-    axios.post('/api/items', {
+    axios.post('/api/items/new', {
       title,
       category,
       description,
       condition
     })
-      .then(response => {
-        console.log(response.data);
-        this.setState({
-          title: '',
-          category: null,
-          description: '',
-          condition: null
-        })
-        this.props.getData();
+    .then(response => {
+      console.log(response.data);
+      this.setState({
+        title: '',
+        category: '',
+        description: '',
+        condition: ''
       })
+      this.props.getData();
+      this.props.history.push('/');
+    })
   }
 
   handleChange = e => {
@@ -41,7 +40,6 @@ export default class New extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-
         <label htmlFor="title">Title: </label>
         <input
           type="text"
@@ -50,10 +48,9 @@ export default class New extends Component {
           value={this.state.title}
           onChange={this.handleChange}
         />
-
-        <label for="category">Category:</label>
+        <label htmlFor="category">Category:</label>
         <select name="category" id="category">
-          <option disabled selected value> -- select an option -- </option>
+          <option defaultValue> -- select an option -- </option>
           <option value="books">Books</option>
           <option value="clothing-accessories">Clothing & Accessories</option>
           <option value="electronics">Electronics</option>
@@ -65,7 +62,6 @@ export default class New extends Component {
           <option value="transports">Transports</option>
           <option value="other">Other</option>
         </select>
-
         <label htmlFor="title">Description: </label>
         <input
           type="text"
@@ -74,16 +70,14 @@ export default class New extends Component {
           value={this.state.description}
           onChange={this.handleChange}
         />
-
-        <label for="condition">Condition:</label>
+        <label htmlFor="condition">Condition:</label>
         <select name="condition" id="condition">
-          <option disabled selected value> -- select an option -- </option>
+          <option defaultValue> -- select an option -- </option>
           <option value="new">New</option>
           <option value="as-new">As New</option>
           <option value="used-good">Used - Good</option>
           <option value="user-fair">User - Fair</option>
         </select>
-
         <button type="submit">Add new ad</button>
       </form>
     )

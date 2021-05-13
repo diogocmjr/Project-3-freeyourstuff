@@ -29,7 +29,6 @@ export default class Signup extends Component {
             password: ''
           })
         } else {
-          console.log(response);
           this.props.setUser(response);
           this.props.history.push('/login');
         }
