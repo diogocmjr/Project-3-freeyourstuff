@@ -41,6 +41,7 @@ export default class New extends Component {
 
   render() {
     return (
+      
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="title">Title: </label>
         <input
@@ -50,9 +51,10 @@ export default class New extends Component {
           value={this.state.title}
           onChange={this.handleChange}
         />
+
         <label htmlFor="category"></label>
         <select name="category" id="category" onChange={this.handleChange}>
-          <option defaultValue> Category </option>
+          <option defaultValue>Category</option>
           <option value="Books">Books</option>
           <option value="Clothing & Accessories">Clothing & Accessories</option>
           <option value="Electronics">Electronics</option>
@@ -64,6 +66,7 @@ export default class New extends Component {
           <option value="Transports">Transports</option>
           <option value="Other">Other</option>
         </select>
+
         <label htmlFor="title">Description: </label>
         <input
           type="text"
@@ -72,6 +75,7 @@ export default class New extends Component {
           value={this.state.description}
           onChange={this.handleChange}
         />
+
         <label htmlFor="condition"></label>
         <select name="condition" id="condition" onChange={this.handleChange}>
           <option defaultValue> Condition</option>
