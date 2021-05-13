@@ -2,12 +2,17 @@ const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const itemSchema = new Schema({
-  name: String,
+  title: String,
   description: String,
   imgUrl: String,
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+  },
+  condition: {
+    type: String,
+    enum: ['New', 'As New', 'Used - Good', 'User - Fair'],
+    default: null
   },
   status: {
     type: String,
