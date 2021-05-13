@@ -11,7 +11,7 @@ const itemSchema = new Schema({
   },
   condition: {
     type: String,
-    enum: ['New', 'As New', 'Used - Good', 'User - Fair'],
+    enum: ['New', 'As New', 'Used - Good', 'Used - Fair'],
     default: null
   },
   status: {
@@ -22,7 +22,7 @@ const itemSchema = new Schema({
   postedDate: Date,
   category: {
     type: String,
-    enum: ['Transports', 'Electronics', 'Family & Baby', 'House & Garden', 'Pets', 'Clothing & Accessories', 'Books, Music & Movies', 'Hobbies', 'Other'],
+    enum: ['Transports', 'Electronics', 'Family & Baby', 'House & Garden', 'Pets', 'Clothing & Accessories', 'Books', 'Music & Movies', 'Hobbies', 'Other'],
     default: null,
   }
 });
