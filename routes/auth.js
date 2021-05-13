@@ -56,4 +56,41 @@ router.delete('/logout', (req, res) => {
   res.status(200).json({ message: 'Successful Logout' });
 })
 
+//get user profile and update
+router.get('/:id', (req, res, next) => {
+  User.findById(req.params.id)
+    .then(user => {
+      if (!user) {
+        res.status(404);
+      } else {
+        res.status(200).json(user)
+      }
+    })
+
+  
+//update user profile
+router.put('/:id', (req, res, next) => {
+  const { firstName, lastName, imageUrl, email, phoneNumber, street, number, city, postCode } = req.body;
+  const location = {
+    street,
+    number,
+    city,
+    postCode
+  }
+  User.findByIdAndUpdate(req.params.id, {
+    firstName,
+    lastName,
+    imageUrl,
+    email,
+    phoneNumber,
+    location
+    }, { new: true })
+  .then(user => {
+    res.status(200).json(user);
+  })
+  .catch(err => res.json(err));
+  });
+})
+
+
 module.exports = router;

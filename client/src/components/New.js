@@ -17,7 +17,8 @@ export default class New extends Component {
       title,
       category,
       description,
-      condition
+      condition,
+      owner: this.state.owner
     })
     .then(response => {
       this.setState({

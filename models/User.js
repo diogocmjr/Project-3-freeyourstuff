@@ -10,16 +10,16 @@ const userSchema = new Schema({
   firstName: String,
   lastName: String,
   email: String,
-  phoneNumber: Number,
+  phoneNumber: String,
   location: {
     street: String,
     number: Number,
     city: String,
-    postCode: Number,
+    postCode: String,
   },
   imgUrl: {
     type: String,
-    default: '',
+    default: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
   }
 });
 
