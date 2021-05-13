@@ -1,16 +1,45 @@
+import React from 'react'
 import './App.css';
-import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Searchbar from './components/Searchbar';
 
-export default class App extends Component {
+
+import Signup from './components/Signup';
+import Login from './components/Login'
+import Home from './components/Home'
+import New from './components/New'
+
+
+class App extends React.Component {
+
+  state = {
+    user: this.props.user
+  }
+
+  setUser = user => {
+    this.setState({ user })
+  }
+
   render() {
     return (
-      <div>
-      
-      
-      </div>
+      <>
+        <Route exact path='/'
+          render={props => <Home setUser={this.setUser} {...props} />}
+        />
+
+        <Route exact path='/signup'
+          render={props => <Signup setUser={this.setUser} {...props} />}
+        />
+
+        <Route exact path='/login' 
+          render={props => <Login setUser={this.setUser} {...props} />}
+        />
+
+        <Route exact path='/new' 
+          render={props => <New setUser={this.setUser} {...props} />}
+        />
+      </>
     )
   }
 }
+
+export default App;

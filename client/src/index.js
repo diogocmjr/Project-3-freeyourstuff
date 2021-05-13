@@ -9,10 +9,9 @@ import axios from 'axios';
 axios.get('/api/auth/loggedin')
   .then(response => {
     const user = response.data;
-    console.log('user in index.js: ', user);
     ReactDOM.render(
       <BrowserRouter>
-        <App user={user} />
+        <App user={user}/>
       </BrowserRouter>,
       document.getElementById('root')
     );
@@ -20,6 +19,9 @@ axios.get('/api/auth/loggedin')
   .catch(err => {
     console.log(err)
   })
+
+
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
