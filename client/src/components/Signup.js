@@ -21,7 +21,6 @@ export default class Signup extends Component {
     const { username, password } = this.state;
     signup(username, password)
       .then(response => {
-        console.log('response axios: ', response.message)
         if (response.message) {
           this.setState({
             message: response.message,
