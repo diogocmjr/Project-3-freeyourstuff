@@ -1,28 +1,46 @@
 import React from 'react'
 import './App.css';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import axios from 'axios'
 
 
 import Signup from './components/Signup';
 import Login from './components/Login'
 import Home from './components/Home'
-
+import New from './components/New'
+import Navbar from './components/Navbar'
 
 class App extends React.Component {
 
   state = {
-    user: this.props.user
+    user: this.props.user,
+    items: []
   }
 
   setUser = user => {
     this.setState({ user })
   }
 
+  getData = () => {
+    axios.get('/api/items')
+      .then(response => {
+        this.setState({
+          projects: response.data
+        })
+      })
+      .catch(err => console.log(err));
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
   render() {
     return (
       <>
+        <Navbar user={this.state.user} setUser={this.setUser}/>
         <Route exact path='/'
-          render={props => <Home setUser={this.setUser} {...props} />}
+          render={props => <Home items={this.state.items} user={this.state.user} setUser={this.setUser} {...props} />}
         />
 
         <Route exact path='/signup'
@@ -31,6 +49,10 @@ class App extends React.Component {
 
         <Route exact path='/login' 
           render={props => <Login setUser={this.setUser} {...props} />}
+        />
+
+        <Route exact path='/new'
+          render={props => <New getData={this.getData} user={this.state.user} setUser={this.setUser} {...props} />}
         />
       </>
     )
