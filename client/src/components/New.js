@@ -72,7 +72,7 @@ export default class New extends Component {
           onChange={this.handleChange}
         />
         <label htmlFor="condition"></label>
-        <select name="condition" id="condition" value={this.state.condition} onChange={this.handleChange}>
+        <select name="condition" id="condition" onChange={this.handleChange}>
           <option defaultValue> Condition</option>
           <option value="New">New</option>
           <option value="As New">As New</option>
