@@ -4,7 +4,10 @@ import ItemsList from './ItemsList'
 
 export default class FilterableItemsList extends Component {
   state = {
-    query: ''
+    query: '',
+    condition: 'Condition',
+    status: 'Status',
+    category: 'Category'
   }
 
   handleSearch = queryParam => {
@@ -12,12 +15,19 @@ export default class FilterableItemsList extends Component {
         query: queryParam
     })
   }
+
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    })
+  }
   
   render() {
     return (
       <div>
-        <SearchBar query={this.state.query} handleSearch={this.handleSearch} />
-        <ItemsList items={this.props.items} query={this.state.query} />
+        <SearchBar handleChange={this.handleChange} handleSearch={this.handleSearch} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
+        <ItemsList items={this.props.items} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
       </div>
     )
   }

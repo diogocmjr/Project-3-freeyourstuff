@@ -16,8 +16,8 @@ export default class EditItem extends Component {
           />
 
         <label htmlFor="category"></label>
-        <select name="category" id="category" onChange={this.handleChange}>
-          <option defaultValue>Category</option>
+        <select name="category" id="category" value={this.props.category} onChange={this.handleChange}>
+          <option value="Category">Category</option>
           <option value="Books">Books</option>
           <option value="Clothing & Accessories">Clothing & Accessories</option>
           <option value="Electronics">Electronics</option>
@@ -40,8 +40,8 @@ export default class EditItem extends Component {
           />
 
           <label htmlFor="condition"></label>
-          <select name="condition" id="condition" onChange={this.handleChange}>
-            <option defaultValue>Condition</option>
+          <select name="condition" id="condition" value={this.props.condition} onChange={this.handleChange}>
+            <option value="Condition">Condition</option>
             <option value="New">New</option>
             <option value="As New">As New</option>
             <option value="Used - Good">Used - Good</option>

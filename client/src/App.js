@@ -26,7 +26,7 @@ class App extends React.Component {
     axios.get('/api/items')
       .then(response => {
         this.setState({
-          projects: response.data
+          items: response.data
         })
       })
       .catch(err => console.log(err));
@@ -56,7 +56,7 @@ class App extends React.Component {
           render={props => <New getData={this.getData} user={this.state.user} setUser={this.setUser} {...props} />}
         />
 
-        <Route exact path='/itemdetails'
+        <Route path='/items/:id'
           render={props => <ItemDetails getData={this.getData} user={this.state.user} setUser={this.setUser} {...props} />}
         />
       </>

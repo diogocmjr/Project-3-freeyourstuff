@@ -5,13 +5,12 @@ import EditItem from './EditItem';
 export default class ItemDetails extends Component {
 
   state = {
-    project: null,
     title: '',
+    category: '',
     description: '',
+    condition: '',
     error: null,
     editForm: false,
-    // this is the flag
-    // dataRequested: false
   }
 
   toggleEditForm = () => {
@@ -25,9 +24,11 @@ export default class ItemDetails extends Component {
       .then(response => {
         console.log(response.data);
         this.setState({
-          project: response.data,
+          item: response.data,
           title: response.data.title,
+          category: response.data.category,
           description: response.data.description,
+          condition: response.data.condition
         })
       })
       .catch(err => {
@@ -41,8 +42,9 @@ export default class ItemDetails extends Component {
   }
 
   deleteItem = () => {
-    axios.delete(`/api/items/${this.state.items._id}`)
+    axios.delete(`/api/items/${this.state.item._id}`)
       .then(() => {
+        this.props.getData();
         this.props.history.push('/');
       })
       .catch(err => {
@@ -58,17 +60,21 @@ export default class ItemDetails extends Component {
   }
 
   handleSubmit = e => {
-    const { title, description } = this.state;
+    const { title, category, description, condition } = this.state;
     e.preventDefault();
-    axios.put(`/api/items/${this.state.items._id}`, {
+    axios.put(`/api/items/${this.state.item._id}`, {
       title,
-      description
+      category,
+      description,
+      condition
     })
       .then(response => {
         this.setState({
-          project: response.data,
+          item: response.data,
           title: response.data.title,
+          category: response.data.category,
           description: response.data.description,
+          condition: response.data.condition,
           editForm: false
         })
       })
@@ -81,13 +87,15 @@ export default class ItemDetails extends Component {
 
   render() {
     if (this.state.error) return <h2>{this.state.error}</h2>
-    if (!this.state.project) return <></>
+    if (!this.state.item) return <></>
     return (
       <>
-        <h1>Title: {this.state.project.title}</h1>
-        <p>Description: {this.state.project.description}</p>
-        <button onClick={this.deleteItem}>Delete this Project ❌</button>
-        <button onClick={this.toggleEditForm}>Show Edit Form 📝</button>
+        <h1>{this.state.item.title}</h1>
+        <p>{this.state.item.category}</p>
+        <p>{this.state.item.description}</p>
+        <p>{this.state.item.condition}</p>
+        <button onClick={this.deleteItem}>Delete Item</button>
+        <button onClick={this.toggleEditForm}>Edit Item</button>
         {this.state.editForm && (
           <EditItem
             {...this.state}

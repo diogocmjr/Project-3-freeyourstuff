@@ -18,20 +18,13 @@ router.post('/signup', (req, res, next) => {
       } else {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
-
-        User.create({ username: username, password: hash })
+        User.create({ username: username, password: hash })   
           .then(createdUser => {
-            req.login(createdUser, err => {
-              if (err) {
-                return res.status(500).json({ message: 'Error while attempting to login' })
-              } else {
-                return res.status(200).json(createdUser);
-              }
-            })
+            return res.status(200).json(createdUser);
           })
           .catch(err => {
             res.json(err);
-          })
+          })     
       }
     })
 })

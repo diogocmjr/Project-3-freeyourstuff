@@ -6,7 +6,7 @@ export default class Signup extends Component {
   state = {
     username: '',
     password: '',
-    message: ''
+    message: '',
   }
 
   handleChange = e => {
@@ -21,15 +21,13 @@ export default class Signup extends Component {
     const { username, password } = this.state;
     signup(username, password)
       .then(response => {
-        console.log('response axios: ', response.message)
         if (response.message) {
           this.setState({
             message: response.message,
             username: '',
-            password: ''
+            password: '',
           })
         } else {
-          this.props.setUser(response);
           this.props.history.push('/login');
         }
       })
@@ -40,7 +38,7 @@ export default class Signup extends Component {
       <div>
         <h2>Signup</h2>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username: </label>
+          <label htmlFor="username"> Username: </label>
           <input
             id="username"
             type="text"
@@ -48,7 +46,7 @@ export default class Signup extends Component {
             value={this.state.username}
             onChange={this.handleChange}
           />
-          <label htmlFor="password">Password: </label>
+          <label htmlFor="password"> Password: </label>
           <input
             id="password"
             type="password"
@@ -56,7 +54,7 @@ export default class Signup extends Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <button type="submit">Sign Up</button>
+          <button type="submit"> Sign Up</button>
           {this.state.message && (
             <h3>{this.state.message}</h3>
           )}
