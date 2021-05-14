@@ -3,6 +3,7 @@ const Item = require('../models/Item');
 
 router.post('/new', (req, res, next) => {
   const { title, description, imgUrl, owner, condition, status, postedDate, category } = req.body;
+  console.log('back end route', title, category, description, condition, imgUrl, owner)
   Item.create({
     title,
     description,
@@ -14,6 +15,7 @@ router.post('/new', (req, res, next) => {
     category
   })
     .then(item => {
+      console.log('succesful', item)
       res.status(201).json(item)
     })
     .catch(err => {
