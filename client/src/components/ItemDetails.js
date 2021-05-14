@@ -114,9 +114,9 @@ export default class ItemDetails extends Component {
     if (this.state.error) return <h2>{this.state.error}</h2>
     if (!this.state.item) return <></>
     return (
-      <>
+      <div className="min-h-screen flex justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         {!this.state.editForm ? 
-        (<>
+        (<div>
           <img src={this.state.imgUrl} alt={this.state.title} />
           <h1>{this.state.title}</h1>
           <p>{this.state.category}</p>
@@ -124,12 +124,16 @@ export default class ItemDetails extends Component {
           <p>{this.state.condition}</p>
           <p>{this.state.owner}</p>
           {this.props.user !== null && this.state.owner === this.props.user._id && (
-            <>
-              <button onClick={this.deleteItem}>Delete Item</button>
-              <button onClick={this.toggleEditForm}>Edit Item</button>
-            </>
+            <div className="flex-row">
+              <button
+              className="group relative w-60 justify-center py-2 mx-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={this.toggleEditForm}>Edit Item</button>
+              <button
+              className="group relative w-60 justify-center py-2 mx-2 px-4 border-2 text-sm font-medium rounded-md text-red-800 border-red-800 bg-transparent hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={this.deleteItem}>Delete Item</button>
+            </div>
           )}
-        </>) :
+        </div>) :
         (<EditItem
           {...this.state}
           handleChange={this.handleChange}
@@ -137,7 +141,7 @@ export default class ItemDetails extends Component {
           handleFileUpload={this.handleFileUpload}
         />)
         }
-      </>
+      </div>
     )
   }
 }

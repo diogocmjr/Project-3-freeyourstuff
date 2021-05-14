@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+/* .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar_logged {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar h4 {
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  margin-left: 1rem;
+}
+
+.navbar_logged h4 {
+  margin-right: 1rem;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: center;
+}
+
+.query {
+  width: 50vh;
+  margin-right: 1rem;
+}
+
+.filters {
+  display: flex;
+  margin-left: 0.5rem;
+} */
