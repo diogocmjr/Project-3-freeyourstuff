@@ -8,6 +8,7 @@ export default class New extends Component {
     title: '',
     category: '',
     description: '',
+    status: '',
     owner: this.props.user._id,
     condition: '',
     imgUrl: ''
@@ -16,7 +17,6 @@ export default class New extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { title, category, description, condition, imgUrl } = this.state;
-    console.log('step1', title, category, description, condition, imgUrl )
     axios.post('/api/items/new', {
       title,
       category,
@@ -55,7 +55,7 @@ export default class New extends Component {
     service
       .handleUpload(uploadData)
       .then(response => {
-        // console.log('response is: ', response);
+        console.log('service response is: ', response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
         this.setState({ imgUrl: response.secure_url });
       })
@@ -101,7 +101,6 @@ export default class New extends Component {
           onChange={this.handleChange}
         />
 
-        <label htmlFor="condition"></label>
         <select name="condition" id="condition" onChange={this.handleChange}>
           <option defaultValue> Condition</option>
           <option value="New">New</option>
@@ -109,7 +108,8 @@ export default class New extends Component {
           <option value="Used - Good">Used - Good</option>
           <option value="Used - Fair">User - Fair</option>
         </select>
-        <input type="file" name='imgUrl' onChange={e => this.handleFileUpload(e)} />
+
+        <input type="file" name='imgUrl' onChange={this.handleFileUpload} />
         <button type="submit">Add item</button>
       </form>
     )
