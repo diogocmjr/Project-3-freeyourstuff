@@ -6,7 +6,7 @@ export default class EditProfile extends Component {
   state = {
     firstName: '',
     lastName: '',
-    imageUrl: '',
+    imgUrl: '',
     email: '',
     phoneNumber: '',
     street: '',
@@ -22,7 +22,7 @@ export default class EditProfile extends Component {
         this.setState({
           firstName: response.data.firstName, 
           lastName: response.data.lastName, 
-          imageUrl: response.data.imageUrl, 
+          imgUrl: response.data.imgUrl, 
           email: response.data.email, 
           phoneNumber: response.data.phoneNumber, 
           street: response.data.street, 
@@ -48,13 +48,13 @@ export default class EditProfile extends Component {
   }
 
   handleSubmit = e => {
-    const { firstName, lastName, imageUrl, email, phoneNumber, street, number, city, postCode } = this.state;
+    const { firstName, lastName, imgUrl, email, phoneNumber, street, number, city, postCode } = this.state;
     e.preventDefault();
     console.log('firstname', firstName)
     axios.put(`/api/auth/${this.props.user._id}`, {
       firstName, 
       lastName, 
-      imageUrl, 
+      imgUrl, 
       email, 
       phoneNumber, 
       street, 
@@ -67,7 +67,7 @@ export default class EditProfile extends Component {
       this.setState({
         firstName: response.data.firstName, 
         lastName: response.data.lastName, 
-        imageUrl: response.data.imageUrl, 
+        imgUrl: response.data.imgUrl, 
         email: response.data.email, 
         phoneNumber: response.data.phoneNumber, 
         street: response.data.street, 

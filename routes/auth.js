@@ -70,7 +70,7 @@ router.get('/:id', (req, res, next) => {
   
 //update user profile
 router.put('/:id', (req, res, next) => {
-  const { firstName, lastName, imageUrl, email, phoneNumber, street, number, city, postCode } = req.body;
+  const { firstName, lastName, imgUrl, email, phoneNumber, street, number, city, postCode } = req.body;
   const location = {
     street,
     number,
@@ -80,7 +80,7 @@ router.put('/:id', (req, res, next) => {
   User.findByIdAndUpdate(req.params.id, {
     firstName,
     lastName,
-    imageUrl,
+    imgUrl,
     email,
     phoneNumber,
     location
