@@ -6,7 +6,7 @@ export default class EditProfile extends Component {
   state = {
     firstName: '',
     lastName: '',
-    imgUrl: '',
+    imageUrl: '',
     email: '',
     phoneNumber: '',
     street: '',
@@ -22,7 +22,7 @@ export default class EditProfile extends Component {
         this.setState({
           firstName: response.data.firstName, 
           lastName: response.data.lastName, 
-          imgUrl: response.data.imgUrl, 
+          imageUrl: response.data.imageUrl, 
           email: response.data.email, 
           phoneNumber: response.data.phoneNumber, 
           street: response.data.street, 
@@ -48,13 +48,13 @@ export default class EditProfile extends Component {
   }
 
   handleSubmit = e => {
-    const { firstName, lastName, imgUrl, email, phoneNumber, street, number, city, postCode } = this.state;
+    const { firstName, lastName, imageUrl, email, phoneNumber, street, number, city, postCode } = this.state;
     e.preventDefault();
     console.log('firstname', firstName)
     axios.put(`/api/auth/${this.props.user._id}`, {
       firstName, 
       lastName, 
-      imgUrl, 
+      imageUrl, 
       email, 
       phoneNumber, 
       street, 
@@ -67,7 +67,7 @@ export default class EditProfile extends Component {
       this.setState({
         firstName: response.data.firstName, 
         lastName: response.data.lastName, 
-        imgUrl: response.data.imgUrl, 
+        imageUrl: response.data.imageUrl, 
         email: response.data.email, 
         phoneNumber: response.data.phoneNumber, 
         street: response.data.street, 
@@ -86,13 +86,17 @@ export default class EditProfile extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Edit profile</h1>
-        {this.state.message && (<h1>{this.state.message}</h1>)}
+      <div className="flex-col">
+        <div className="flex justify-center mt-6 mb-3 text-3xl font-bold text-gray-900">
+          <h1>Edit profile</h1>
+          {this.state.message && (<h1>{this.state.message}</h1>)}
+        </div>
+        <div className="flex justify-center">
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="firstName"></label>
+          <div className="my-1">
+            <label className="text-xs" htmlFor="firstName">Name</label>
             <input
-              className="inline-flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
               type="text"
               id="firstName"
               name="firstName"
@@ -100,9 +104,11 @@ export default class EditProfile extends Component {
               value={this.state.firstName}
               onChange={this.handleChange}
             />
-            <label htmlFor="lastName"></label>
+            </div>
+            <div className="my-1">
+            <label className="text-xs" htmlFor="lastName">Surname</label>
             <input
-              className="inline-flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
               type="text"
               id="lastName"
               name="lastName"
@@ -110,9 +116,11 @@ export default class EditProfile extends Component {
               value={this.state.lastName}
               onChange={this.handleChange}
             />
-            <label htmlFor="email"></label>
+            </div>
+            <div className="my-1">
+            <label className="text-xs" htmlFor="email">Email</label>
             <input
-              className="inline-flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
               type="text"
               id="email"
               name="email"
@@ -120,9 +128,11 @@ export default class EditProfile extends Component {
               value={this.state.email}
               onChange={this.handleChange}
             />
-            <label htmlFor="phoneNumber"></label>
+            </div>
+            <div className="my-1">
+            <label className="text-xs" htmlFor="phoneNumber">Phone Number</label>
             <input
-              className="inline-flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
               type="string"
               id="phoneNumber"
               name="phoneNumber"
@@ -130,9 +140,11 @@ export default class EditProfile extends Component {
               value={this.state.phoneNumber}
               onChange={this.handleChange}
             />
-            <label htmlFor="street"></label>
+            </div>
+            <div className="my-1">
+            <label className="text-xs" htmlFor="street">Street</label>
             <input
-              className="inline-flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
               type="string"
               id="street"
               name="street"
@@ -140,9 +152,11 @@ export default class EditProfile extends Component {
               value={this.state.street}
               onChange={this.handleChange}
             />
-            <label htmlFor="number"></label>
+            </div>
+            <div className="my-1">
+            <label className="text-xs" htmlFor="number">Number</label>
             <input
-              className="inline-flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
               type="number"
               id="number"
               name="number"
@@ -150,9 +164,11 @@ export default class EditProfile extends Component {
               value={this.state.number}
               onChange={this.handleChange}
             />
-            <label htmlFor="city"></label>
+            </div>
+            <div className="my-1">
+            <label className="text-xs" htmlFor="city">City</label>
             <input
-              className="inline-flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
               type="string"
               id="city"
               name="city"
@@ -160,9 +176,11 @@ export default class EditProfile extends Component {
               value={this.state.city}
               onChange={this.handleChange}
             />
-            <label htmlFor="postCode"></label>
+            </div>
+            <div className="my-1">
+            <label className="text-xs" htmlFor="postCode">Post Code</label>
             <input
-              className="inline-flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
               type="string"
               id="postCode"
               name="postCode"
@@ -170,8 +188,12 @@ export default class EditProfile extends Component {
               value={this.state.postCode}
               onChange={this.handleChange}
             />
-            <button className="group relative w-40 flex justify-around py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">Update</button>          
+            </div>
+            <div className="flex justify-center my-1">
+            <button className="relative w-60 my-4 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">Update</button>          
+            </div>
           </form>
+        </div>
       </div>
     )
   }

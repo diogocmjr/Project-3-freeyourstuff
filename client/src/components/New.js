@@ -75,11 +75,12 @@ export default class New extends Component {
           id="title"
           value={this.state.title}
           onChange={this.handleChange}
+          required
         />
 
         <label htmlFor="category"></label>
-        <select name="category" id="category" onChange={this.handleChange}>
-          <option defaultValue>Category</option>
+        <select name="category" id="category" onChange={this.handleChange} required>
+          <option disabled="disabled" selected="selected">Category</option>
           <option value="Books">Books</option>
           <option value="Clothing & Accessories">Clothing & Accessories</option>
           <option value="Electronics">Electronics</option>
@@ -99,18 +100,19 @@ export default class New extends Component {
           id="description"
           value={this.state.description}
           onChange={this.handleChange}
+          required
         />
 
-        <select name="condition" id="condition" onChange={this.handleChange}>
-          <option defaultValue> Condition</option>
+        <select name="condition" id="condition" onChange={this.handleChange} required>
+          <option disabled="disabled" selected="selected"> Condition</option>
           <option value="New">New</option>
           <option value="As New">As New</option>
           <option value="Used - Good">Used - Good</option>
           <option value="Used - Fair">User - Fair</option>
         </select>
 
-        <input type="file" name='imgUrl' onChange={this.handleFileUpload} />
-        <button type="submit">Add item</button>
+        <input type="file" name='imgUrl' onChange={this.handleFileUpload} required/>
+        <button type="submit">New item</button>
       </form>
     )
   }
