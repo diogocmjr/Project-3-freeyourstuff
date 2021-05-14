@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import service from '../services/service';
+
 export default class New extends Component {
 
   state = {
@@ -7,25 +9,30 @@ export default class New extends Component {
     category: '',
     description: '',
     owner: this.props.user._id,
-    condition: ''
+    condition: '',
+    imgUrl: ''
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    const { title, category, description, condition } = this.state;
+    const { title, category, description, condition, imgUrl } = this.state;
+    console.log('step1', title, category, description, condition, imgUrl )
     axios.post('/api/items/new', {
       title,
       category,
       description,
       condition,
-      owner: this.state.owner
+      owner: this.state.owner,
+      imgUrl
     })
     .then(response => {
+      console.log('respons from backend', response)
       this.setState({
         title: '',
         category: '',
         description: '',
-        condition: ''
+        condition: '',
+        imgUrl: ''
       })
       this.props.getData();
       this.props.history.push('/');
@@ -38,6 +45,24 @@ export default class New extends Component {
       [name]: value
     })
   }
+
+  handleFileUpload = e => {
+     const uploadData = new FormData();
+    // imgUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append('imgUrl', e.target.files[0]);
+ 
+    service
+      .handleUpload(uploadData)
+      .then(response => {
+        // console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        this.setState({ imgUrl: response.secure_url });
+      })
+      .catch(err => {
+        console.log('Error while uploading the file: ', err);
+      });
+  };
 
   render() {
     return (
@@ -68,7 +93,7 @@ export default class New extends Component {
         </select>
 
         <label htmlFor="title">Description: </label>
-        <input
+        <textarea
           type="text"
           name="description"
           id="description"
@@ -84,7 +109,8 @@ export default class New extends Component {
           <option value="Used - Good">Used - Good</option>
           <option value="Used - Fair">User - Fair</option>
         </select>
-        <button type="submit">Add new ad</button>
+        <input type="file" name='imgUrl' onChange={e => this.handleFileUpload(e)} />
+        <button type="submit">Add item</button>
       </form>
     )
   }
