@@ -34,6 +34,7 @@ export default class SearchBar extends Component {
           </div>
           <div className="px-2">
             <select className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="status" id="status" value={this.props.status} onChange={(e) => {this.props.handleChange(e)}}>
+              <option value='Status'>Any Status</option>
               <option value='Available'>Available</option>
               <option value="Reserved">Reserved</option>
             </select>

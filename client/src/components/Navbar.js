@@ -32,7 +32,7 @@ export default function Navbar(props) {
                     <Link to='/profile'>
                     <img
                       className="h-8 w-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src={props.user.imgUrl}
                       alt=""
                       /></Link></h4>
                     <h4><Link to='/' onClick={() => handleLogout()}>Log out</Link></h4>
