@@ -38,7 +38,7 @@ export default function Navbar(props) {
                         <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                           <span className="sr-only">Open user menu</span>
                           <img
-                            className="h-8 w-8 rounded-full"
+                            className="object-cover h-8 w-8 rounded-full"
                             src={props.user.imgUrl}
                             alt=""
                           />
@@ -80,7 +80,7 @@ export default function Navbar(props) {
                                   'block px-4 py-2 text-sm text-gray-700'
                                 )}
                               >
-                                Edit Profile
+                                Settings
                               </Link>
                             )}
                           </Menu.Item>

@@ -104,7 +104,7 @@ export default class EditProfile extends Component {
       <div className="flex-col">
         
         <div className="flex justify-center mt-6 mb-3 text-3xl font-bold text-gray-900">
-          <h1>Edit profile</h1>         
+          <h1>Settings</h1>         
         </div>
        
         <div className="flex justify-center">
@@ -241,7 +241,7 @@ export default class EditProfile extends Component {
             </div>
             
             <div className="flex justify-center my-1">
-              <button className="relative w-60 my-4 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">Update</button>          
+              <button className="relative w-60 my-4 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">Update</button>         
             </div>
           </form>
         </div>

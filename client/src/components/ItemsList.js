@@ -12,12 +12,14 @@ export default class ItemsList extends Component {
     })
 
     const item = filteredItems.map(item => (
-      <div key={item._id} className="flex-col">
-        <div><img className="h-40 w-60 mx-10 my-2" src={item.imgUrl} alt={item.title} /></div>
-        {this.props.user ? <Link to={`/items/${item._id}`}><h1>{item.title}</h1></Link> : <button onClick={() => this.props.updateMessage()}><h1>{item.title}</h1></button>}
-        <div>{item.condition}</div>
-        <div>{item.owner.firstName} {item.owner.lastName}</div>
-        <div>{item.owner.location.street} {item.owner.location.number} {item.owner.location.city}, {item.owner.location.country} {item.owner.location.postCode}</div>
+      <div className="flex flex-col p-8 items-center" key={item._id}>
+          <Link to={`/items/${item._id}`}><img className="object-cover h-40 w-40 rounded hover:opacity-70" src={item.imgUrl} alt={item.title}/></Link>
+          {this.props.user ? <Link to={`/items/${item._id}`}><h1 className="text-lg mt-2 font-medium hover:underline">{item.title}</h1></Link> : <button onClick={() => this.updateMessage()}><h1>{item.title}</h1></button>}
+          <div>{item.condition}</div>
+          {/* <div>{item.owner.firstName} {item.owner.lastName}</div> */}
+          {/* <div>{item.owner.location.street} {item.owner.location.number}</div> */}
+          <span>{item.owner.location.postCode} {item.owner.location.city}</span>
+          <span className="text-gray-400 "> ({item.owner.location.country})</span>
       </div>
     ))
 
@@ -31,9 +33,11 @@ export default class ItemsList extends Component {
                 <span>×</span>
               </button>
             </div>
-          </div>
+            </div>
         )}
+        <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1 p-8 text-sm">
         {item}
+        </div>
       </div>
     )
   }
