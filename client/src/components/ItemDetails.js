@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import service from '../services/service';
+import { Link } from 'react-router-dom'
 import EditItem from './EditItem';
 
 export default class ItemDetails extends Component {
@@ -136,13 +137,17 @@ export default class ItemDetails extends Component {
           <hr className="w-16 border-gray-300 hidden sm:block"></hr>
           <div className="my-4">{this.state.description}</div>
           </div>
-          <div className="col-start-1 row-start-3 space-y-3 px-4">
+          <div className="col-start-1 row-start-3 space-y-1 px-4">
             <div className="flex items-center text-black text-sm font-medium">
             <div className="mr-2 bg-gray-100">By {this.state.owner.username}</div>
+            {/* <div className="mr-2 bg-gray-100">By <Link to={`/profile/${this.state.owner._id}`}>{this.state.owner.username}</Link></div> */}
             </div>
-            <div>{this.state.owner.phoneNumber}</div>
-            <div>{this.state.owner.email}</div>
-        </div>
+            <div className="flex flex-row text-sm">
+              <span>{this.state.owner.phoneNumber}</span>
+              <span className="text-base font-normal mx-2">·</span>
+              <span>{this.state.owner.email}</span>
+            </div>
+          </div>
           <div className="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
         <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
           <div className="relative col-span-3 row-span-2 md:col-span-2">

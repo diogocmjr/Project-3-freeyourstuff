@@ -63,7 +63,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Navbar user={this.state.user} setUser={this.setUser}/>
+        <Navbar className="z-100" user={this.state.user} setUser={this.setUser}/>
         <Route exact path='/profile'
           render={props => <Dashboard removeMessage={this.removeMessage} message={this.state.message} items={this.state.items} user={this.state.user} {...props} />}
         />

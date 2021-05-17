@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class SearchBar extends Component {
   render() {
     return (
-      <div className="flex justify-center">
+      <div className="flex justify-center py-2">
         <div className="px-4 w-80">
           <input className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" type="text" name="search" id="search" value={this.props.query} onChange={(e) => {this.props.handleSearch(e.target.value)}} placeholder="Search"/>
         </div>

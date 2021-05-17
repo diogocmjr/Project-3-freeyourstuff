@@ -26,10 +26,12 @@ export default class FilterableItemsList extends Component {
   render() {
     return (
       <div>
-      <div>
-        <SearchBar handleChange={this.handleChange} handleSearch={this.handleSearch} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
-        <ItemsList user={this.props.user} items={this.props.items} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
-      </div>
+        <div>
+          <SearchBar handleChange={this.handleChange} handleSearch={this.handleSearch} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
+        </div>
+        <div>
+          <ItemsList user={this.props.user} items={this.props.items} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
+        </div>
       </div>
     )
   }
