@@ -28,19 +28,19 @@ export default function Navbar(props) {
               <div className="ml-4 flex items-center md:ml-6">
                 {props.user ? (
                   <div className="flex space-x-4">
-                    <h4 className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    <p className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <Link to='/profile'>
                     <img
                       className="h-8 w-8 rounded-full"
                       src={props.user.imgUrl}
                       alt=""
-                      /></Link></h4>
-                    <h4><Link to='/' onClick={() => handleLogout()}>Log out</Link></h4>
+                      /></Link></p>
+                    <p className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><Link to='/' onClick={() => handleLogout()}>Log out</Link></p>
                   </div>
                 ) : (
                   <div className="flex space-x-4">
-                    <h4 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><Link to='/signup'>Sign up</Link></h4>
-                    <h4 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><Link to='/login'>Log in</Link></h4>
+                    <p className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><Link to='/signup'>Sign up</Link></p>
+                    <p className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"><Link to='/login'>Log in</Link></p>
                   </div>  
                 )}
               </div>
