@@ -27,7 +27,7 @@ export default function Dashboard(props) {
         <div className="flex justify-center my-4">
           <div className="w-6/12 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             <strong className="font-bold">{props.message}</strong>
-            <button onClick={() => props.removeMessage()} class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-3 mr-4 outline-none focus:outline-none">
+            <button onClick={() => props.removeMessage()} className="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-3 mr-4 outline-none focus:outline-none">
               <span>×</span>
             </button>
           </div>

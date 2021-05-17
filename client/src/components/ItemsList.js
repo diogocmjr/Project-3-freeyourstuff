@@ -5,6 +5,7 @@ export default class ItemsList extends Component {
   render() {   
     const filteredItems = this.props.items.filter(item => {
       return item.title.toLowerCase().includes(this.props.query.toLowerCase())
+             && (this.props.user && item.owner._id !== this.props.user._id)
              && (this.props.condition === 'Condition' ? true : item.condition === this.props.condition)
              && (this.props.status === 'Status' ? true : item.status === this.props.status)
              && (this.props.category === 'Category' ? true : item.category === this.props.category)
@@ -21,7 +22,7 @@ export default class ItemsList extends Component {
     ))
 
     return (
-      <div className="mt-6">
+      <div className="mt-24">
         {this.props.message && (
           <div className="flex justify-center my-4">
             <div className="w-6/12 bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative" role="alert">

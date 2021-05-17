@@ -21,18 +21,23 @@ export default class EditProfile extends Component {
   getData = () => {
     axios.get(`/api/auth/${this.props.user._id}`)
       .then(response => {
+        console.log(response.data)
         this.setState({
-          firstName: response.data.firstName, 
-          lastName: response.data.lastName, 
+          firstName: response.data.firstName || '', 
+          lastName: response.data.lastName || '', 
           imgUrl: response.data.imgUrl, 
-          email: response.data.email, 
-          phoneNumber: response.data.phoneNumber, 
-          street: response.data.location.street, 
-          number: response.data.location.number, 
-          city: response.data.location.city, 
-          country: response.data.location.country,
-          postCode: response.data.location.postCode
+          email: response.data.email || '', 
+          phoneNumber: response.data.phoneNumber || ''
         })
+        if (response.data.location) {
+          this.setState({
+            street: response.data.location.street, 
+            number: response.data.location.number, 
+            city: response.data.location.city, 
+            country: response.data.location.country,
+            postCode: response.data.location.postCode
+          })
+        }
       })
       .catch(err => {
         if (err.response.status === 404) {
