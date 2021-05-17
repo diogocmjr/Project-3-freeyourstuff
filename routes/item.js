@@ -32,7 +32,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  Item.findById(req.params.id)
+  Item.findById(req.params.id).populate('owner')
     .then(item => {
       if (!item) {
         res.status(404).json(item);

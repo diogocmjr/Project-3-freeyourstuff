@@ -66,7 +66,6 @@ export default class ItemDetails extends Component {
     service
       .handleUpload(uploadData)
       .then(response => {
-        // console.log('response is: ', response);
         this.setState({ imgUrl: response.secure_url });
       })
       .catch(err => {
@@ -99,7 +98,6 @@ export default class ItemDetails extends Component {
         category: response.data.category,
         description: response.data.description,
         condition: response.data.condition,
-        owner: response.data.owner,
         status: response.data.status,
         imgUrl: response.data.imgUrl,
         editForm: false
@@ -115,7 +113,6 @@ export default class ItemDetails extends Component {
   render() {
     console.log(this.state)
     if (this.state.error) return <h2>{this.state.error}</h2>
-    if (!this.state.item) return <></>
     return (
       <>
         {!this.state.editForm ? 
@@ -132,7 +129,8 @@ export default class ItemDetails extends Component {
               <div className="ml-1">
                 <span className="text-black">{this.state.condition}</span>
                 <span className="text-base font-normal mx-2">·</span>
-                {/* <span className="sm:hidden md:inline">{this.state.location.street} {this.state.location.number} {this.state.location.postCode} {this.state.location.city}, {this.state.location.country}</span> */}
+                <span>{this.state.location.street} {this.state.location.number}, {this.state.location.postCode} {this.state.location.city}</span>
+                <span className="text-gray-400"> ({this.state.location.country})</span>
               </div>
             </div>
           <hr className="w-16 border-gray-300 hidden sm:block"></hr>
@@ -159,7 +157,7 @@ export default class ItemDetails extends Component {
         </div>
       </div>
 
-          {this.props.user !== null && this.state.owner === this.props.user._id && (
+          {this.props.user !== null && this.state.owner._id === this.props.user._id && (
             <div className="flex-row py-3">
               <button
               className="group relative w-40 justify-center py-2 mx-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
