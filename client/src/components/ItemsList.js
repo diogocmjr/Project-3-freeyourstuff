@@ -14,6 +14,7 @@ export default class ItemsList extends Component {
     const item = filteredItems.map(item => (
       <div key={item._id}>
         <img src={item.imgUrl} alt={item.title} />
+        {console.log(item.imgUrl)}
         <h1><Link to={`/items/${item._id}`}>{item.title}</Link></h1>
         <h3>{item.condition}</h3>
       </div>

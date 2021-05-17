@@ -62,14 +62,23 @@ export default class New extends Component {
       .catch(err => {
         console.log('Error while uploading the file: ', err);
       });
+      console.log(this.state.imgUrl)
   };
 
   render() {
     return (
-      
+      <div className="flex-col">
+
+      <div className="flex justify-center mt-6 mb-3 text-3xl font-bold text-gray-900">
+          <h1>List your new item</h1>         
+        </div>
+
+      <div className="flex justify-center">
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="title">Title: </label>
+      <div className="flex-col my-2">
+        <label className="text-xs" htmlFor="title">Title: </label>
         <input
+          className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
           type="text"
           name="title"
           id="title"
@@ -77,9 +86,11 @@ export default class New extends Component {
           onChange={this.handleChange}
           required
         />
+        </div>
 
-        <label htmlFor="category"></label>
-        <select name="category" id="category" onChange={this.handleChange} required>
+        <div className="flex-col my-2">
+        <label className="text-xs" htmlFor="category">Category: </label>
+        <select className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="category" id="category" onChange={this.handleChange} required>
           <option disabled="disabled" selected="selected">Category</option>
           <option value="Books">Books</option>
           <option value="Clothing & Accessories">Clothing & Accessories</option>
@@ -92,9 +103,12 @@ export default class New extends Component {
           <option value="Transports">Transports</option>
           <option value="Other">Other</option>
         </select>
+        </div>
 
-        <label htmlFor="title">Description: </label>
+        <div className="flex-col my-2">
+        <label className="text-xs" htmlFor="title">Description: </label>
         <textarea
+          className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
           type="text"
           name="description"
           id="description"
@@ -102,18 +116,28 @@ export default class New extends Component {
           onChange={this.handleChange}
           required
         />
+        </div>
 
-        <select name="condition" id="condition" onChange={this.handleChange} required>
-          <option disabled="disabled" selected="selected"> Condition</option>
+        <div className="flex-col my-2">
+        <label className="text-xs" htmlFor="title">Condition: </label>
+        <select className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="condition" id="condition" onChange={this.handleChange} required>
+          <option disabled="disabled" selected="selected">Condition</option>
           <option value="New">New</option>
           <option value="As New">As New</option>
           <option value="Used - Good">Used - Good</option>
           <option value="Used - Fair">User - Fair</option>
         </select>
+        </div>
 
-        <input type="file" name='imgUrl' onChange={this.handleFileUpload} required/>
-        <button type="submit">New item</button>
+        <div className="flex-col my-2">
+        <label className="text-xs my-2" htmlFor="image_upload">Add Image</label>
+        <input className="flex items-center ml-1 w-60" type="file" name='imgUrl' onChange={this.handleFileUpload} required/>
+        <button className="relative w-60 my-4 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">New item</button>          
+        </div>
+
       </form>
+      </div>
+      </div>
     )
   }
 }
