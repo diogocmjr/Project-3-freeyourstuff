@@ -12,8 +12,9 @@ export default class ItemDetails extends Component {
     description: '',
     condition: '',
     imgUrl: '',
-    owner: '',
+    owner: {},
     status: '',
+    location: {},
     editForm: false
   }
 
@@ -34,7 +35,8 @@ export default class ItemDetails extends Component {
           condition: response.data.condition,
           imgUrl: response.data.imgUrl,
           status: response.data.status,
-          owner: response.data.owner
+          owner: response.data.owner,
+          location: response.data.owner.location
         })
       })
       .catch(err => {
@@ -64,7 +66,6 @@ export default class ItemDetails extends Component {
     service
       .handleUpload(uploadData)
       .then(response => {
-        // console.log('response is: ', response);
         this.setState({ imgUrl: response.secure_url });
       })
       .catch(err => {
@@ -97,7 +98,6 @@ export default class ItemDetails extends Component {
         category: response.data.category,
         description: response.data.description,
         condition: response.data.condition,
-        owner: response.data.owner,
         status: response.data.status,
         imgUrl: response.data.imgUrl,
         editForm: false
@@ -112,7 +112,6 @@ export default class ItemDetails extends Component {
 
   render() {
     if (this.state.error) return <h2>{this.state.error}</h2>
-    if (!this.state.item) return <></>
     return (
       <div className="min-h-screen flex justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         {!this.state.editForm ? 
@@ -122,8 +121,11 @@ export default class ItemDetails extends Component {
           <p>{this.state.category}</p>
           <p>{this.state.description}</p>
           <p>{this.state.condition}</p>
-          <p>{this.state.owner}</p>
-          {this.props.user !== null && this.state.owner === this.props.user._id && (
+          <p>{this.state.owner.username}</p>
+          <p>{this.state.location.street} {this.state.location.number} {this.state.location.city}, {this.state.location.postCode}</p>
+          <p>{this.state.owner.phoneNumber}</p>
+          <p>{this.state.owner.email}</p>
+          {this.props.user !== null && this.state.owner._id === this.props.user._id && (
             <div className="flex-row">
               <button
               className="group relative w-60 justify-center py-2 mx-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
