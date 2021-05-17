@@ -13,6 +13,7 @@ export default class EditProfile extends Component {
     street: '',
     number: '',
     city: '',
+    country: '',
     postCode: '',
     message: ''
   }
@@ -29,6 +30,7 @@ export default class EditProfile extends Component {
           street: response.data.street, 
           number: response.data.number, 
           city: response.data.city, 
+          country: response.data.country,
           postCode: response.data.postCode
         })
       })
@@ -63,9 +65,8 @@ export default class EditProfile extends Component {
   };
 
   handleSubmit = e => {
-    const { firstName, lastName, imgUrl, email, phoneNumber, street, number, city, postCode } = this.state;
+    const { firstName, lastName, imgUrl, email, phoneNumber, street, number, city, country, postCode } = this.state;
     e.preventDefault();
-    console.log('firstname', firstName)
     axios.put(`/api/auth/${this.props.user._id}`, {
       firstName, 
       lastName, 
@@ -75,10 +76,10 @@ export default class EditProfile extends Component {
       street, 
       number, 
       city, 
+      country,
       postCode
     })
     .then(response => {
-      console.log('response:', response.data)
       this.setState({
         firstName: response.data.firstName, 
         lastName: response.data.lastName, 
@@ -88,6 +89,7 @@ export default class EditProfile extends Component {
         street: response.data.street, 
         number: response.data.number, 
         city: response.data.city, 
+        country: response.data.country,
         postCode: response.data.postCode,
         message: 'Information updated succesfully'
       })
@@ -210,6 +212,19 @@ export default class EditProfile extends Component {
                 onChange={this.handleChange}
               />
             </div>
+
+            <div className="my-1">
+              <label className="text-xs" htmlFor="country">Country</label>
+              <input
+                className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                type="string"
+                id="country"
+                name="country"
+                placeholder="Country"
+                value={this.state.country}
+                onChange={this.handleChange}
+              />
+            </div>
             
             <div className="my-1">
               <label className="text-xs" htmlFor="postCode">Post Code</label>
@@ -233,7 +248,7 @@ export default class EditProfile extends Component {
                 <input 
                   className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
                   type="file" 
-                  name='imgUrl' 
+                  name='imgUrl'
                   onChange={this.handleFileUpload}                 
                 />
             </div>
