@@ -6,7 +6,7 @@ export default class Signup extends Component {
   state = {
     username: '',
     password: '',
-    message: '',
+    message: ''
   }
 
   handleChange = e => {
@@ -25,7 +25,7 @@ export default class Signup extends Component {
           this.setState({
             message: response.message,
             username: '',
-            password: '',
+            password: ''
           })
         } else {
           this.props.history.push('/login');

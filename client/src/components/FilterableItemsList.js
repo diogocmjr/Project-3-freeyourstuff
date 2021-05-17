@@ -7,7 +7,26 @@ export default class FilterableItemsList extends Component {
     query: '',
     condition: 'Condition',
     status: 'Status',
-    category: 'Category'
+    category: 'Category',
+    message: ''
+  }
+
+  updateMessage = (message) => {
+    this.setState({
+      message: message
+    })
+  }
+
+  removeMessage = () => {
+    this.setState({
+      message: ''
+    })
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      message: ''
+    })
   }
 
   handleSearch = queryParam => {
@@ -25,14 +44,10 @@ export default class FilterableItemsList extends Component {
   
   render() {
     return (
-      <div>
-        <div>
-          <SearchBar handleChange={this.handleChange} handleSearch={this.handleSearch} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
-        </div>
-        <div>
-          <ItemsList user={this.props.user} items={this.props.items} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
-        </div>
-      </div>
+      <>
+        <SearchBar updateMessage={this.updateMessage} removeMessage={this.removeMessage} user={this.props.user} handleChange={this.handleChange} handleSearch={this.handleSearch} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
+        <ItemsList updateMessage={this.updateMessage} removeMessage={this.removeMessage} message={this.state.message} user={this.props.user} items={this.props.items} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
+      </>
     )
   }
 }

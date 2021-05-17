@@ -21,18 +21,23 @@ export default class EditProfile extends Component {
   getData = () => {
     axios.get(`/api/auth/${this.props.user._id}`)
       .then(response => {
+        console.log(response.data)
         this.setState({
-          firstName: response.data.firstName, 
-          lastName: response.data.lastName, 
+          firstName: response.data.firstName || '', 
+          lastName: response.data.lastName || '', 
           imgUrl: response.data.imgUrl, 
-          email: response.data.email, 
-          phoneNumber: response.data.phoneNumber, 
-          street: response.data.location.street, 
-          number: response.data.location.number, 
-          city: response.data.location.city, 
-          country: response.data.location.country,
-          postCode: response.data.location.postCode
+          email: response.data.email || '', 
+          phoneNumber: response.data.phoneNumber || ''
         })
+        if (response.data.location) {
+          this.setState({
+            street: response.data.location.street, 
+            number: response.data.location.number, 
+            city: response.data.location.city, 
+            country: response.data.location.country,
+            postCode: response.data.location.postCode
+          })
+        }
       })
       .catch(err => {
         if (err.response.status === 404) {
@@ -99,7 +104,7 @@ export default class EditProfile extends Component {
       <div className="flex-col">
         
         <div className="flex justify-center mt-6 mb-3 text-3xl font-bold text-gray-900">
-          <h1>Edit profile</h1>         
+          <h1>Settings</h1>         
         </div>
        
         <div className="flex justify-center">
@@ -236,7 +241,7 @@ export default class EditProfile extends Component {
             </div>
             
             <div className="flex justify-center my-1">
-              <button className="relative w-60 my-4 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">Update</button>          
+              <button className="relative w-60 my-4 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">Update</button>         
             </div>
           </form>
         </div>
