@@ -17,7 +17,8 @@ class App extends React.Component {
 
   state = {
     user: this.props.user,
-    items: []
+    items: [],
+    message: ''
   }
 
   setUser = user => {
@@ -38,31 +39,37 @@ class App extends React.Component {
     this.getData();
   }
 
-  // getUser = () => {
-  //   axios.get('/api/auth/loggedin')
-  //     .then(response => {
-  //       this.setState({
-  //         user: response.data
-  //       })
-  //     })
-  // }
+  getUser = () => {
+    axios.get('/api/auth/loggedin')
+      .then(response => {
+        this.setState({
+          user: response.data
+        })
+      })
+  }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if(prevState.user.imgUrl !== this.state.user.imgUrl) {
-  //     this.getUser();
-  //   }
-  // }
+  updateMessage = (message) => {
+    this.setState({
+      message: message
+    })
+  }
+
+  removeMessage = () => {
+    this.setState({
+      message: ''
+    })
+  }
 
   render() {
     return (
       <>
         <Navbar user={this.state.user} setUser={this.setUser}/>
         <Route exact path='/profile'
-          render={props => <Dashboard items={this.state.items} user={this.state.user} {...props} />}
+          render={props => <Dashboard removeMessage={this.removeMessage} message={this.state.message} items={this.state.items} user={this.state.user} {...props} />}
         />
 
         <Route exact path='/profile/edit'
-          render={props => <EditProfile user={this.state.user} {...props} />}
+          render={props => <EditProfile updateMessage={this.updateMessage} getUser={this.getUser} user={this.state.user} {...props} />}
         />
 
         <Route exact path='/'
