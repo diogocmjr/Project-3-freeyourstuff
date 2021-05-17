@@ -11,19 +11,17 @@ export default class ItemsList extends Component {
     })
 
     const item = filteredItems.map(item => (
-      <div key={item._id}>
-      <div className="flex-col">
+      <div key={item._id} className="flex-col">
         <div><img className="h-40 w-60 mx-10 my-2" src={item.imgUrl} alt={item.title} /></div>
         {this.props.user ? <Link to={`/items/${item._id}`}><h1>{item.title}</h1></Link> : <button onClick={() => this.props.updateMessage()}><h1>{item.title}</h1></button>}
         <div>{item.condition}</div>
         <div>{item.owner.firstName} {item.owner.lastName}</div>
         <div>{item.owner.location.street} {item.owner.location.number} {item.owner.location.city}, {item.owner.location.country} {item.owner.location.postCode}</div>
       </div>
-      </div>
     ))
 
     return (
-      <div>
+      <div className="mt-6">
         {this.props.message && (
           <div className="flex justify-center my-4">
             <div className="w-6/12 bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative" role="alert">
