@@ -24,7 +24,7 @@ router.post('/new', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  Item.find()
+  Item.find().populate('owner')
     .then(items => {
       res.status(200).json(items);
     })
