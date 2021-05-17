@@ -38,6 +38,21 @@ class App extends React.Component {
     this.getData();
   }
 
+  // getUser = () => {
+  //   axios.get('/api/auth/loggedin')
+  //     .then(response => {
+  //       this.setState({
+  //         user: response.data
+  //       })
+  //     })
+  // }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if(prevState.user.imgUrl !== this.state.user.imgUrl) {
+  //     this.getUser();
+  //   }
+  // }
+
   render() {
     return (
       <>

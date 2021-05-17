@@ -67,7 +67,6 @@ export default class EditProfile extends Component {
   handleSubmit = e => {
     const { firstName, lastName, imgUrl, email, phoneNumber, street, number, city, country, postCode } = this.state;
     e.preventDefault();
-    console.log('firstname', firstName)
     axios.put(`/api/auth/${this.props.user._id}`, {
       firstName, 
       lastName, 
@@ -81,7 +80,6 @@ export default class EditProfile extends Component {
       postCode
     })
     .then(response => {
-      console.log('response:', response.data)
       this.setState({
         firstName: response.data.firstName, 
         lastName: response.data.lastName, 
@@ -250,7 +248,7 @@ export default class EditProfile extends Component {
                 <input 
                   className="flex justify-center w-60 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
                   type="file" 
-                  name='imgUrl' 
+                  name='imgUrl'
                   onChange={this.handleFileUpload}                 
                 />
             </div>

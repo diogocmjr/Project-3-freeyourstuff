@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const Item = require('../models/Item');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
@@ -53,6 +54,7 @@ router.get('/loggedin', (req, res) => {
 
 router.delete('/logout', (req, res) => {
   req.logout();
+  req.session.destroy();
   res.status(200).json({ message: 'Successful Logout' });
 })
 
@@ -91,6 +93,27 @@ router.put('/:id', (req, res, next) => {
   })
   .catch(err => res.json(err));
   });
+})
+
+router.delete('/:id', (req, res) => {
+  
+  Item.deleteMany({
+    owner: req.params.id
+  })
+  then(() => {
+    Item.findByIdAndDelete(req.params.id)
+    .then(() => {
+      req.logout();
+      req.session.destroy();
+      res.status(200).json({ message: 'Account Deleted!' });
+    })
+    .catch(err => {
+      res.json(err)
+    })
+  })
+  .catch(err => {
+    res.json(err)
+  })
 })
 
 
