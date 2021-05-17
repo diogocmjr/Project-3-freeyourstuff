@@ -73,7 +73,7 @@ export default class New extends Component {
       <form onSubmit={this.handleSubmit}>
         <div className="flex-col my-2">
             <img 
-              className="flex justify-center w-60" 
+              className="flex justify-center w-60 rounded-md" 
               src={this.state.imgUrl} 
               alt="" 
             />
