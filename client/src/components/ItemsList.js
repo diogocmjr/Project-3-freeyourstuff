@@ -34,11 +34,13 @@ export default class ItemsList extends Component {
 
     const item = filteredItems.map(item => (
       <div key={item._id}>
-        <img src={item.imgUrl} alt={item.title} />
+      <div className="flex-col">
+        <div><img className="h-40 w-60 mx-10 my-2" src={item.imgUrl} alt={item.title} /></div>
         {this.props.user ? <Link to={`/items/${item._id}`}><h1>{item.title}</h1></Link> : <button onClick={() => this.updateMessage()}><h1>{item.title}</h1></button>}
-        <h3>{item.condition}</h3>
-        <h3>{item.owner.firstName} {item.owner.lastName}</h3>
-        <h3>{item.owner.location.street} {item.owner.location.number} {item.owner.location.city} {item.owner.location.postCode}</h3>        
+        <div>{item.condition}</div>
+        <div>{item.owner.firstName} {item.owner.lastName}</div>
+        <div>{item.owner.location.street} {item.owner.location.number} {item.owner.location.city}, {item.owner.location.country} {item.owner.location.postCode}</div>
+      </div>
       </div>
     ))
 
