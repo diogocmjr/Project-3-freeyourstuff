@@ -22,7 +22,7 @@ export default function Navbar(props) {
         <div className="relative flex items-center justify-between h-16">
           <div className="flex-1 flex items-center sm:items-stretch justify-start">
             <div className="flex-shrink-0 flex items-center">
-            <Link to='/'><img className="h-8 w-8"
+            <Link to='/'><img className="ml-2 h-9 w-9"
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                 alt="Workflow">
                </img> </Link>
@@ -36,13 +36,13 @@ export default function Navbar(props) {
                     <>
                       <div className="flex flex-row items-center">
                         <div className="flex items-center justify-left sm:static">
-                          <button className="flex text-gray-100 bg-gray-600 hover:bg-gray-100 hover:text-gray-700 px-2 py-1 sm:px-3 sm:py-2 rounded-md text-sm sm:font-medium mr-5" type="submit"><Link to='/new'>Add Item</Link></button>
+                          <button className="flex text-gray-100 bg-gray-600 hover:bg-gray-100 hover:text-gray-700 px-3 py-2 rounded-md font-medium mr-5" type="submit"><Link to='/new'>Add Item</Link></button>
                         </div>
                         <div>
                           <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                             <span className="sr-only">Open user menu</span>
                             <img
-                              className="object-cover h-8 w-8 rounded-full"
+                              className="object-cover h-9 w-9 rounded-full"
                               src={props.user.imgUrl}
                               alt=""
                             />
