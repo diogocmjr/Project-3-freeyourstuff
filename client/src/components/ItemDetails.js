@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import service from '../services/service';
-import EditItem from './EditItem';
 
 export default class ItemDetails extends Component {
 
@@ -15,14 +13,7 @@ export default class ItemDetails extends Component {
     imgUrl: '',
     owner: {},
     status: '',
-    location: {},
-    editForm: false
-  }
-
-  toggleEditForm = () => {
-    this.setState((state) => ({
-      editForm: !state.editForm
-    }))
+    location: {}
   }
 
   getData = () => {
@@ -53,58 +44,12 @@ export default class ItemDetails extends Component {
     axios.delete(`/api/items/${this.state.item._id}`)
       .then(() => {
         this.props.getData();
-        this.props.history.push('/');
+        this.props.updateMessage('Item deleted succesfully')
+        this.props.history.push('/dashboard');
       })
       .catch(err => {
         console.log(err)
       })
-  }
-
-  handleFileUpload = e => {
-    const uploadData = new FormData();
-    uploadData.append('imgUrl', e.target.files[0]);
-
-    service
-      .handleUpload(uploadData)
-      .then(response => {
-        this.setState({ imgUrl: response.secure_url });
-      })
-      .catch(err => {
-        console.log('Error while uploading the file: ', err);
-      });
- };
-
-  handleChange = e => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    })
-  }
-
-  handleSubmit = e => {
-    const { title, category, description, condition, imgUrl, status } = this.state;
-    e.preventDefault();
-    axios.put(`/api/items/${this.state.item._id}`, {
-      title,
-      category,
-      description,
-      condition,
-      status,
-      imgUrl
-    })
-    .then(response => {
-      this.setState({
-        item: response.data,
-        title: response.data.title,
-        category: response.data.category,
-        description: response.data.description,
-        condition: response.data.condition,
-        status: response.data.status,
-        imgUrl: response.data.imgUrl,
-        editForm: false
-      })
-    })
-    .catch(err => console.log(err));
   }
 
   componentDidMount() {
@@ -112,12 +57,10 @@ export default class ItemDetails extends Component {
   }
 
   render() {
-    console.log(this.state.owner)
     if (this.state.error) return <h2>{this.state.error}</h2>
     return (
       <>
-        {!this.state.editForm ? 
-        (<div className="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-20 sm:gap-x-8 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-20 sm:gap-x-8 md:py-16">
           <div className="z-10 col-start-1 row-start-1 px-4 pt-20 pb-4 bg-gradient-to-t from-black via-transparent sm:bg-none">
             <p className="text-md font-medium text-white sm:mb-1 sm:text-gray-500">{this.state.category}</p>
             <h2 className="text-2xl font-semibold text-white sm:text-2xl sm:leading-7 sm:text-black md:text-3xl">{this.state.title}</h2>
@@ -137,6 +80,7 @@ export default class ItemDetails extends Component {
           <hr className="w-16 border-gray-300 hidden sm:block"></hr>
           <div className="my-4">{this.state.description}</div>
           </div>
+          
           <div className="col-start-1 row-start-3 space-y-1 px-4 py-4">
             <div className="flex items-center text-black text-sm font-medium">
             <Link to={`/profile/${this.state.owner._id}`}><div className="mr-2 bg-gray-100">Given by <span className="underline">{this.state.owner.username}</span></div></Link>
@@ -160,25 +104,17 @@ export default class ItemDetails extends Component {
           </div>
         </div>
       </div>
-
           {this.props.user !== null && this.state.owner._id === this.props.user._id && (
             <div className="flex-row py-3">
-              <button
+              <Link to={`/items/${this.state.item._id}/edit`}><button
               className="group relative w-40 justify-center py-2 mx-2 px-4 sm:my-1 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              onClick={this.toggleEditForm}>Edit Item</button>
+              type="button">Edit Item</button></Link>
               <button
               className="group relative w-40 justify-center py-2 mx-2 px-4 border-2 text-sm font-medium rounded-md text-red-800 border-red-800 bg-transparent hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={this.deleteItem}>Delete Item</button>
             </div>
           )}
-        </div>) :
-        (<EditItem
-          {...this.state}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          handleFileUpload={this.handleFileUpload}
-        />)
-        }
+        </div>
       </>
     )
   }

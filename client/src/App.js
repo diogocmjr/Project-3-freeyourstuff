@@ -13,6 +13,8 @@ import ItemDetails from './components/ItemDetails'
 import Dashboard from './components/Dashboard'
 import Profile from './components/Profile'
 import EditProfile from './components/EditProfile'
+import EditItem from './components/EditItem'
+import ProtectedRoute from './components/ProtectedRoute'
 
 class App extends React.Component {
 
@@ -66,16 +68,30 @@ class App extends React.Component {
       <>
         <Navbar user={this.state.user} setUser={this.setUser}/> 
 
-        <Route exact path='/dashboard'
-          render={props => <Dashboard updateMessage={this.updateMessage} getUser={this.getUser} user={this.state.user} items={this.state.items} {...props} />}
-        />      
-     
-        <Route exact path='/dashboard/edit'
-          render={props => <EditProfile updateMessage={this.updateMessage} getUser={this.getUser} user={this.state.user} {...props} />}
+        <ProtectedRoute
+          path='/dashboard'
+          user={this.state.user}
+          removeMessage={this.removeMessage} 
+          message={this.state.message}
+          updateMessage={this.updateMessage}
+          getUser={this.getUser}
+          items={this.state.items}
+          component={Dashboard}
+          redirectPath='/login'
+        />
+
+        <ProtectedRoute
+          path='/dashboard/edit'
+          user={this.state.user}
+          updateMessage={this.updateMessage}
+          getUser={this.getUser}
+          items={this.state.items}
+          component={EditProfile}
+          redirectPath='/login'
         />
 
         <Route exact path='/profile/:id'
-          render={props => <Profile removeMessage={this.removeMessage} message={this.state.message} items={this.state.items} user={this.state.user} {...props} />}
+          render={props => <Profile items={this.state.items} user={this.state.user} {...props} />}
         />
 
         <Route exact path='/'
@@ -94,8 +110,12 @@ class App extends React.Component {
           render={props => <New getData={this.getData} user={this.state.user} setUser={this.setUser} {...props} />}
         />
 
-        <Route path='/items/:id'
-          render={props => <ItemDetails getData={this.getData} user={this.state.user} setUser={this.setUser} {...props} />}
+        <Route exact path='/items/:id'
+          render={props => <ItemDetails user={this.state.user} getData={this.getData} updateMessage={this.updateMessage} {...props} />}
+        />
+
+        <Route exact path='/items/:id/edit'
+          render={props => <EditItem user={this.state.user} updateMessage={this.updateMessage} {...props} />}
         />
       </>
     )
