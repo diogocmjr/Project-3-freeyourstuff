@@ -13,9 +13,11 @@ export default function OfferedItems(props) {
     </div>
     ))
   
+  const username = props.user.username;
+
   return (
     <div>
-      <div className="text-2xl flex px-10 m-10 justify-start align-text-top flex-wrap gap-3">My Stuff</div>
+      {username && <div className="text-2xl flex px-10 m-10 justify-start align-text-top flex-wrap gap-3">{username.charAt(0).toUpperCase() + props.user.username.slice(1)}'s Stuff</div>}
       <div className="flex px-10 m-10 justify-start align-text-top flex-wrap gap-3">
         {items}
       </div>

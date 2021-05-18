@@ -114,8 +114,12 @@ class App extends React.Component {
           render={props => <ItemDetails user={this.state.user} getData={this.getData} updateMessage={this.updateMessage} {...props} />}
         />
 
-        <Route exact path='/items/:id/edit'
-          render={props => <EditItem user={this.state.user} updateMessage={this.updateMessage} {...props} />}
+        <ProtectedRoute
+          path='/items/:id/edit'
+          user={this.state.user}
+          updateMessage={this.updateMessage}
+          component={EditItem}
+          redirectPath='/login'
         />
       </>
     )
