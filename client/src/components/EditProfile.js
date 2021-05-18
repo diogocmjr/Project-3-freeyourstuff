@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import service from '../services/service';
-
-import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationIcon } from '@heroicons/react/outline'
-
 export default class EditProfile extends Component {
   
   state = {
@@ -18,7 +14,6 @@ export default class EditProfile extends Component {
     city: '',
     country: '',
     postCode: '',
-    message: '',
     popup: false
   }
 
@@ -104,11 +99,8 @@ export default class EditProfile extends Component {
       country,
       postCode
     })
-    .then(response => {
-      this.setState({
-        message: 'Information updated succesfully'
-      })
-      this.props.updateMessage(this.state.message)
+    .then(() => {
+      this.props.updateMessage('Information updated succesfully')
       this.props.getUser();
       this.props.history.push('/dashboard');
     })
@@ -136,7 +128,7 @@ export default class EditProfile extends Component {
                 src={this.state.imgUrl} 
                 alt="" 
               />
-              <input className="flex items-center ml-1 w-60" type="file" name='imgUrl' onChange={this.handleFileUpload} required/>
+              <input className="flex items-center ml-1 w-60" type="file" name='imgUrl' onChange={this.handleFileUpload}/>
             </div>
             
             <div className="my-1">

@@ -1,8 +1,13 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import OfferedItems from './OfferedItems'
 
 export default function Dashboard(props) {    
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div>     
       {props.message && (

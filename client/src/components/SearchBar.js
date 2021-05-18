@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 export default class SearchBar extends Component {
   render() {
@@ -40,10 +39,6 @@ export default class SearchBar extends Component {
                 <option value='Available'>Available</option>
                 <option value="Reserved">Reserved</option>
               </select>
-            </div>
-          
-            <div className="px-2">
-              {this.props.user ? <button className="relative w-30 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit"><Link to='/new'>Add Item</Link></button>  : <button className="relative w-30 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => this.props.updateMessage('Please log in to add an item')}><p>Add Item</p></button> }         
             </div>
           </div>
         </div>
