@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import service from '../services/service';
-import { Link } from 'react-router-dom'
 import EditItem from './EditItem';
 
 export default class ItemDetails extends Component {
