@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import service from '../services/service';
 import EditItem from './EditItem';
 
@@ -111,7 +112,7 @@ export default class ItemDetails extends Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state.owner)
     if (this.state.error) return <h2>{this.state.error}</h2>
     return (
       <>
@@ -138,7 +139,7 @@ export default class ItemDetails extends Component {
           </div>
           <div className="col-start-1 row-start-3 space-y-3 px-4">
             <div className="flex items-center text-black text-sm font-medium">
-            <div className="mr-2 bg-gray-100">By {this.state.owner.username}</div>
+            <Link to={`/profile/${this.state.owner._id}`}><div className="mr-2 bg-gray-100">By {this.state.owner.username}</div></Link>
             </div>
             <div>{this.state.owner.phoneNumber}</div>
             <div>{this.state.owner.email}</div>

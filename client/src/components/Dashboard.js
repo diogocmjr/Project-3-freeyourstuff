@@ -36,7 +36,7 @@ export default function Dashboard(props) {
 
       {props.user.firstName ? <h1 className="text-3xl mx-10 my-5">{props.user.firstName} {props.user.lastName}</h1> : <h1 className="text-3xl mx-10 my-5">{props.user.username}</h1>}
       <img className="h-40 w-40 mx-10 my-2 rounded-full" src={props.user.imgUrl} alt=""/>
-      <Link className="text-sm mx-20" to='/profile/edit'>Edit profile</Link>
+      <Link className="text-sm mx-20" to='/dashboard/edit'>Edit profile</Link>
       {props.user.location && <h2 className="text-xl mx-10 my-5">{props.user.location.city}, {props.user.location.country}</h2>}
       <OfferedItems items={props.items} user={props.user}/>
       <button onClick={() => setOpen(true)}>Delete Account</button>

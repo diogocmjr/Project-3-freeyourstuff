@@ -109,6 +109,16 @@ export default class EditProfile extends Component {
        
         <div className="flex justify-center">
           <form onSubmit={this.handleSubmit}>
+            <div className="flex-col my-2">
+              <label className="text-xs my-2" htmlFor="image_upload">Add Image</label>
+              <img 
+                className="flex justify-center w-60 rounded-md mb-2" 
+                src={this.state.imgUrl} 
+                alt="" 
+              />
+              <input className="flex items-center ml-1 w-60" type="file" name='imgUrl' onChange={this.handleFileUpload} required/>
+            </div>
+            
             <div className="my-1">
               <label className="text-xs" htmlFor="firstName">Name</label>
               <input
@@ -224,20 +234,6 @@ export default class EditProfile extends Component {
                 value={this.state.postCode}
                 onChange={this.handleChange}
               />
-            </div>
-            
-            <div className="my-1">
-                <img 
-                  className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100" 
-                  src={this.state.imgUrl} 
-                  alt="" 
-                />
-                <input 
-                  className="flex items-center ml-1 w-60"
-                  type="file" 
-                  name='imgUrl'
-                  onChange={this.handleFileUpload}                 
-                />
             </div>
             
             <div className="flex justify-center my-1">
