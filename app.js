@@ -82,6 +82,9 @@ app.use('/api/auth', auth);
 const item = require('./routes/item');
 app.use('/api/items', item);
 
+const person = require('./routes/person');
+app.use('/api/person', person);
+
 app.use('/api', require('./routes/cloudinary'));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

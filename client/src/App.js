@@ -11,6 +11,7 @@ import New from './components/New'
 import Navbar from './components/Navbar'
 import ItemDetails from './components/ItemDetails'
 import Dashboard from './components/Dashboard'
+import Profile from './components/Profile'
 import EditProfile from './components/EditProfile'
 
 class App extends React.Component {
@@ -63,13 +64,18 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Navbar className="z-100" user={this.state.user} setUser={this.setUser}/>
-        <Route exact path='/profile'
-          render={props => <Dashboard removeMessage={this.removeMessage} message={this.state.message} items={this.state.items} user={this.state.user} {...props} />}
+        <Navbar user={this.state.user} setUser={this.setUser}/> 
+
+        <Route exact path='/dashboard'
+          render={props => <Dashboard updateMessage={this.updateMessage} getUser={this.getUser} user={this.state.user} items={this.state.items} {...props} />}
+        />      
+     
+        <Route exact path='/dashboard/edit'
+          render={props => <EditProfile updateMessage={this.updateMessage} getUser={this.getUser} user={this.state.user} {...props} />}
         />
 
-        <Route exact path='/profile/edit'
-          render={props => <EditProfile updateMessage={this.updateMessage} getUser={this.getUser} user={this.state.user} {...props} />}
+        <Route exact path='/profile/:id'
+          render={props => <Profile removeMessage={this.removeMessage} message={this.state.message} items={this.state.items} user={this.state.user} {...props} />}
         />
 
         <Route exact path='/'

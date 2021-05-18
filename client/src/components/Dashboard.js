@@ -33,12 +33,14 @@ export default function Dashboard(props) {
           </div>
         </div>
       )}
+      
       <div className="flex flex-row p-5">
       <div className="mx-5">
       <img className="object-cover h-40 w-40 mx-10 my-2 rounded-full" src={props.user.imgUrl} alt=""/>
       {props.user.firstName ? <h1 className="text-3xl mx-10 my-5 text-center">{props.user.firstName} {props.user.lastName}</h1> : <h1 className="text-3xl mx-10 my-5">{props.user.username}</h1>}
-      {/* <Link className="text-sm mx-20" to='/profile/edit'>Settings</Link> */}
+      {/* <Link className="text-sm mx-20" to='/dashboard/edit'>Settings</Link> */}
       {props.user.location && <h2 className="text-xl mx-10 my-5 text-center">{props.user.location.city}, {props.user.location.country}</h2>}
+       
       <button onClick={() => setOpen(true)}>Delete Account</button>
       </div>
       <div>

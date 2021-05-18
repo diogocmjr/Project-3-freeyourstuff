@@ -72,12 +72,12 @@ export default class New extends Component {
       <div className="flex justify-center">
       <form onSubmit={this.handleSubmit}>
         <div className="flex-col my-2">
+            <label className="text-xs my-2" htmlFor="image_upload">Add Image</label>
             <img 
-              className="flex justify-center w-60 rounded-md" 
+              className="flex justify-center w-60 rounded-md mb-2" 
               src={this.state.imgUrl} 
               alt="" 
             />
-            <label className="text-xs my-2" htmlFor="image_upload">Add Image</label>
             <input className="flex items-center ml-1 w-60" type="file" name='imgUrl' onChange={this.handleFileUpload} required/>
         </div>
         
