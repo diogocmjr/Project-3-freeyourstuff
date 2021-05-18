@@ -5,12 +5,12 @@ export default class SearchBar extends Component {
   render() {
     return (
       <div className="py-4 fixed z-40 bg-white w-full">
-        <div className="flex justify-center">
-          <div className="px-4 w-80">
-            <input className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" type="text" name="search" id="search" value={this.props.query} onChange={(e) => {this.props.handleSearch(e.target.value)}} placeholder="Search"/>
+        <div className="flex justify-center lg:flex-row sm:flex-col md:flex-col flex-col">
+          <div className="px-4 mr-4">
+            <input className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 mx-2 my-1 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" type="text" name="search" id="search" value={this.props.query} onChange={(e) => {this.props.handleSearch(e.target.value)}} placeholder="Search"/>
           </div>
-          <div className="relative flex text-left">
-            <div className="px-2">
+          <div className="relative flex lg:flex-row sm:flex-col md:flex-col flex-col text-left w-auto px-4">
+            <div className="px-2 my-1">
               <select className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="category" id="category" value={this.props.category} onChange={(e) => {this.props.handleChange(e)}}>
                 <option value='Category'> All Categories </option>
                 <option value="Books">Books</option>
@@ -25,7 +25,7 @@ export default class SearchBar extends Component {
                 <option value="Other">Other</option>
               </select>
             </div>
-            <div className="px-2">
+            <div className="px-2 my-1">
               <select className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="condition" id="condition" value={this.props.condition} onChange={(e) => {this.props.handleChange(e)}}>
                 <option value='Condition'>Any Condition</option>
                 <option value="New">New</option>
@@ -34,16 +34,12 @@ export default class SearchBar extends Component {
                 <option value="Used - Fair">User - Fair</option>
               </select>
             </div>
-            <div className="px-2">
+            <div className="px-2 my-1">
               <select className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="status" id="status" value={this.props.status} onChange={(e) => {this.props.handleChange(e)}}>
                 <option value='Status'>Any Status</option>
                 <option value='Available'>Available</option>
                 <option value="Reserved">Reserved</option>
               </select>
-            </div>
-          
-            <div className="px-2">
-              {this.props.user ? <button className="relative w-30 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit"><Link to='/new'>Add Item</Link></button>  : <button className="relative w-30 flex justify-center content-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => this.props.updateMessage('Please log in to add an item')}><p>Add Item</p></button> }         
             </div>
           </div>
         </div>
