@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
-import ItemsList from './ItemsList'
+import ItemsList from './ItemsList';
+import Welcome from './Welcome'
 
 export default class FilterableItemsList extends Component {
   state = {
@@ -8,7 +9,8 @@ export default class FilterableItemsList extends Component {
     condition: 'Condition',
     status: 'Status',
     category: 'Category',
-    message: ''
+    message: '',
+    welcome: true
   }
 
   updateMessage = (message) => {
@@ -31,14 +33,16 @@ export default class FilterableItemsList extends Component {
 
   handleSearch = queryParam => {
     this.setState({
-        query: queryParam
+        query: queryParam,
+        welcome: false
     })
   }
 
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({
-      [name]: value
+      [name]: value,
+      welcome: false
     })
   }
   
@@ -46,7 +50,7 @@ export default class FilterableItemsList extends Component {
     return (
       <>
         <SearchBar updateMessage={this.updateMessage} removeMessage={this.removeMessage} user={this.props.user} handleChange={this.handleChange} handleSearch={this.handleSearch} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
-        <ItemsList updateMessage={this.updateMessage} removeMessage={this.removeMessage} message={this.state.message} user={this.props.user} items={this.props.items} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>
+        {(this.state.welcome && !this.props.user) ? <Welcome /> : <ItemsList updateMessage={this.updateMessage} removeMessage={this.removeMessage} message={this.state.message} user={this.props.user} items={this.props.items} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category}/>}
       </>
     )
   }
