@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { SelectorIcon } from '@heroicons/react/solid'
+
 
 export default class SearchBar extends Component {
   render() {
