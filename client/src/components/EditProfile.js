@@ -24,7 +24,7 @@ export default class EditProfile extends Component {
   }
 
   deleteAccount = () => {
-    axios.delete(`api/auth/${this.props.user._id}`)
+    axios.delete(`api/user/${this.props.user._id}`)
       .then(() => {
         this.props.history.push('/');
       })
@@ -34,9 +34,8 @@ export default class EditProfile extends Component {
   }
 
   getData = () => {
-    axios.get(`/api/auth/${this.props.user._id}`)
+    axios.get(`/api/user/${this.props.user._id}`)
       .then(response => {
-        console.log(response.data)
         this.setState({
           firstName: response.data.firstName || '', 
           lastName: response.data.lastName || '', 
@@ -87,7 +86,7 @@ export default class EditProfile extends Component {
   handleSubmit = e => {
     const { firstName, lastName, imgUrl, email, phoneNumber, street, number, city, country, postCode } = this.state;
     e.preventDefault();
-    axios.put(`/api/auth/${this.props.user._id}`, {
+    axios.put(`/api/user/${this.props.user._id}`, {
       firstName, 
       lastName, 
       imgUrl, 
