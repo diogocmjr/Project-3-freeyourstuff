@@ -109,10 +109,10 @@ export default class ItemDetails extends Component {
                 )}
               {this.state.owner.email && <span>{this.state.owner.email}</span>}
             </div>
-            <div className="flex">
-              <button onClick={() => this.addToFavourites()}>Add to favourites</button>
-              <button>Contact owner</button>
-            </div>
+            
+            {this.props.user !== null && this.state.owner._id === this.props.user._id}
+            
+          
           </div>
           <div className="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
         <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
@@ -127,7 +127,7 @@ export default class ItemDetails extends Component {
           </div>
         </div>
       </div>
-          {this.props.user !== null && this.state.owner._id === this.props.user._id && (
+          {this.props.user !== null && this.state.owner._id === this.props.user._id ? (
             <div className="flex-row py-3">
               <Link to={`/items/${this.state.item._id}/edit`}><button
               className="group relative w-40 justify-center py-2 mx-2 px-4 sm:my-1 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -136,7 +136,16 @@ export default class ItemDetails extends Component {
               className="group relative w-40 justify-center py-2 mx-2 px-4 border-2 text-sm font-medium rounded-md text-red-800 border-red-800 bg-transparent hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={this.deleteItem}>Delete Item</button>
             </div>
-          )}
+          ) : 
+            (<div className="flex-row py-3">
+              <button 
+                className="group relative w-40 justify-center py-2 mx-2 px-4 sm:my-1 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                onClick={() => this.addToFavourites()}>Add to favourites</button>
+              {/* This button should be a link to the send message component */}
+              <button
+                className="group relative w-40 justify-center py-2 mx-2 px-4 sm:my-1 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >Contact owner</button>
+            </div>)}
         </div>
       </>
     )

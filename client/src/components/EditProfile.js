@@ -4,16 +4,16 @@ import service from '../services/service';
 export default class EditProfile extends Component {
   
   state = {
-    firstName: '',
-    lastName: '',
-    imgUrl: '',
-    email: '',
-    phoneNumber: '',
-    street: '',
-    number: '',
-    city: '',
-    country: '',
-    postCode: '',
+    firstName: this.props.user.firstName || '',
+    lastName: this.props.user.lastName || '',
+    imgUrl: this.props.user.imgUrl,
+    email: this.props.user.email || '',
+    phoneNumber: this.props.user.phoneNumber || '',
+    street: this.props.user.location.street || '',
+    number: this.props.user.location.number || '',
+    city: this.props.user.location.city || '',
+    country: this.props.user.location.country || '',
+    postCode: this.props.user.location.postCode || '',
     popup: false
   }
 
@@ -30,35 +30,6 @@ export default class EditProfile extends Component {
       })
       .catch(err => {
         console.log(err)
-      })
-  }
-
-  getData = () => {
-    axios.get(`/api/user/${this.props.user._id}`)
-      .then(response => {
-        this.setState({
-          firstName: response.data.firstName || '', 
-          lastName: response.data.lastName || '', 
-          imgUrl: response.data.imgUrl, 
-          email: response.data.email || '', 
-          phoneNumber: response.data.phoneNumber || ''
-        })
-        if (response.data.location) {
-          this.setState({
-            street: response.data.location.street, 
-            number: response.data.location.number, 
-            city: response.data.location.city, 
-            country: response.data.location.country,
-            postCode: response.data.location.postCode
-          })
-        }
-      })
-      .catch(err => {
-        if (err.response.status === 404) {
-          this.setState({
-            message: 'Not found 🤷‍♀️🤷‍♂️'
-          })
-        }
       })
   }
 
@@ -106,11 +77,8 @@ export default class EditProfile extends Component {
     .catch(err => console.log(err));
   }
 
-  componentDidMount() {
-    this.getData();
-  }
-
   render() {
+    console.log('state', this.state)
     return (
       <div className="flex-col">
         
