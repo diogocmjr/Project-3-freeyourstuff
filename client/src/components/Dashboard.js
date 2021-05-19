@@ -22,11 +22,11 @@ export default function Dashboard(props) {
         </div>
       )}
       
-      <div className="flex flex-row p-5">
-        <div className="mx-5">
-          <img className="object-cover h-40 w-40 mx-10 my-2 rounded-full" src={props.user.imgUrl} alt=""/>
-          {props.user.firstName ? <h1 className="text-3xl mx-10 my-5 text-center">{props.user.firstName} {props.user.lastName}</h1> : <h1 className="text-3xl mx-10 my-5">{props.user.username}</h1>}
-          {props.user.location && <h2 className="text-xl mx-10 my-5 text-center">{props.user.location.city}, {props.user.location.country}</h2>}      
+      <div className="flex flex-row p-5 ml-2">
+        <div className="flex flex-col mx-2 my-2 items-center">
+          <img className="object-cover w-40 h-40 mx-5 my-5 rounded-full" src={props.user.imgUrl} alt=""/>
+          {props.user.firstName ? <h1 className="sm:text-2xl md:text-3xl text-xl mt-4 mb-2 text-center">{props.user.firstName} {props.user.lastName}</h1> : <h1 className="text-3xl mx-10 my-5">{props.user.username}</h1>}
+          {props.user.location && <h2 className="sm:text-lg md:text-xl text-base mx-10 my-2 text-center">{props.user.location.city}, {props.user.location.country}</h2>}      
         </div>
 
         <div className="flex flex-col">
