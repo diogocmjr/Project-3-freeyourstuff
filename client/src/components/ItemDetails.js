@@ -81,12 +81,12 @@ export default class ItemDetails extends Component {
     return (
       <>
         <div className="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-20 sm:gap-x-8 md:py-16">
-          <div className="z-10 col-start-1 row-start-1 px-4 pt-20 pb-4 bg-gradient-to-t from-black via-transparent sm:bg-none">
+          <div className="z-10 col-start-1 row-start-1 px-4 pt-20 sm:pt-6 pb-4 bg-gradient-to-t from-black via-transparent sm:bg-none">
             <p className="text-md font-medium text-white sm:mb-1 sm:text-gray-500">{this.state.category}</p>
             <h2 className="text-2xl font-semibold text-white sm:text-2xl sm:leading-7 sm:text-black md:text-3xl">{this.state.title}</h2>
           </div>
           <div className="col-start-1 row-start-2 px-4 py-2 sm:pb-16">
-            <div className="flex items-center text-sm font-medium my-5 sm:mt-2 sm:mb-4">
+            <div className="flex items-center text-sm font-medium my-3 sm:mt-2 sm:mb-4">
               <div className="ml-1">
                 <span className="text-black">{this.state.condition}</span>
                 <span className="text-base font-normal mx-2">·</span>
@@ -107,14 +107,13 @@ export default class ItemDetails extends Component {
             <Link to={`/profile/${this.state.owner._id}`} className="mr-2 bg-gray-100">Given by <span className="underline">{this.state.owner.username}</span></Link>
             {/* <Link to={`/profile/${this.state.owner._id}`}><div className="mr-2 bg-gray-100">Given by <span className="underline">{this.state.owner.username.charAt(0).toUpperCase() + this.state.owner.username.slice(1)}</span></div></Link> */}
             </div>
-            <div className="flex flex-row text-sm">
+            <div className="flex flex-col text-sm">
               {this.state.owner.phoneNumber && (
                 <>
-                <span>{this.state.owner.phoneNumber}</span>
-                <span className="text-base font-normal mx-2">·</span>
+                <span>Tel: {this.state.owner.phoneNumber}</span>
                 </>
                 )}
-              {this.state.owner.email && <span>{this.state.owner.email}</span>}
+              {this.state.owner.email && <span>Email: {this.state.owner.email}</span>}
             </div>
             
             {this.props.user !== null && this.state.owner._id === this.props.user._id}
@@ -122,16 +121,16 @@ export default class ItemDetails extends Component {
           
           </div>
           <div className="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
-        <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
-          <div className="relative col-span-3 row-span-2 md:col-span-2">
+        <div className="w-full grid grid-cols-1 grid-rows-1 gap-2">
+          <div className="relative col-span-1 row-span-1 md:col-span-1">
             <img src={this.state.imgUrl} alt={this.state.title} className="absolute inset-0 w-full h-full object-cover bg-gray-100 sm:rounded-lg" />
           </div>
-          <div className="relative hidden md:block">
+          {/* <div className="relative hidden md:block">
             <img src={this.state.imgUrl} alt={this.state.title} className="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
           </div>
           <div className="relative hidden md:block">
             <img src={this.state.imgUrl} alt={this.state.title} className="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
-          </div>
+          </div> */}
         </div>
       </div>
           {this.props.user !== null && this.state.owner._id === this.props.user._id ? (
