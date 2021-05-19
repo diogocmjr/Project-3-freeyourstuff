@@ -16,8 +16,10 @@ export default class ItemsList extends Component {
           {this.props.user ? <Link to={`/items/${item._id}`}><img className="object-cover h-40 w-40 rounded hover:opacity-70" src={item.imgUrl} alt={item.title}/></Link> : <button onClick={() => this.props.updateMessage('Please log in to see item details')}><img className="object-cover h-40 w-40 rounded hover:opacity-70" src={item.imgUrl} alt={item.title}/></button>}
           {this.props.user ? <Link to={`/items/${item._id}`}><h1 className="text-lg mt-2 font-medium hover:underline">{item.title}</h1></Link> : <button className="text-lg mt-2 font-medium hover:underline" onClick={() => this.props.updateMessage('Please log in to see item details')}><h1>{item.title}</h1></button>}
           <div>{item.condition}</div>
-          <span>{item.owner.location.postCode} {item.owner.location.city}</span>
-          <span className="text-gray-400 "> ({item.owner.location.country})</span>
+          {item.owner.location ? (<>
+            <span>{item.owner.location.postCode} {item.owner.location.city}</span>
+            <span className="text-gray-400"> ({item.owner.location.country})</span>
+            </>) : <span className="text-gray-400">(No location specified)</span>}
       </div>
     ))
 

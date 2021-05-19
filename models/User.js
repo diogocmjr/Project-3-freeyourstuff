@@ -21,7 +21,8 @@ const userSchema = new Schema({
   imgUrl: {
     type: String,
     default: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
-  }
+  },
+  favourites: Array
 });
 
 const User = model("User", userSchema);

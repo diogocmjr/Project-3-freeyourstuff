@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react'
 import OfferedItems from './OfferedItems'
+import WishList from './WishList'
 
 export default function Dashboard(props) {    
   
@@ -28,8 +29,13 @@ export default function Dashboard(props) {
           {props.user.location && <h2 className="sm:text-lg md:text-xl text-base mx-10 my-2 text-center">{props.user.location.city}, {props.user.location.country}</h2>}      
         </div>
 
-        <div>
-        <OfferedItems user={props.user} items={props.items} condition={props.condition} status={props.status} category={props.category}/>
+        <div className="flex flex-col">
+          <div>
+            <OfferedItems user={props.user} items={props.items} condition={props.condition} status={props.status} category={props.category}/>
+          </div>
+          <div>
+            <WishList user={props.user} items={props.items} condition={props.condition} status={props.status} category={props.category}/>
+          </div>
         </div>
       </div>
     </div>
