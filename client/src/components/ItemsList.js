@@ -12,7 +12,7 @@ export default class ItemsList extends Component {
     })
 
     const item = filteredItems.map(item => (
-      <div className="flex flex-col p-8 items-center" key={item._id}>
+      <div className="flex flex-col p-6 items-center" key={item._id}>
           {this.props.user ? <Link to={`/items/${item._id}`}><img className="object-cover h-40 w-40 rounded hover:opacity-70" src={item.imgUrl} alt={item.title}/></Link> : <button onClick={() => this.props.updateMessage('Please log in to see item details')}><img className="object-cover h-40 w-40 rounded hover:opacity-70" src={item.imgUrl} alt={item.title}/></button>}
           {this.props.user ? <Link to={`/items/${item._id}`}><h1 className="text-lg mt-2 font-medium hover:underline">{item.title}</h1></Link> : <button className="text-lg mt-2 font-medium hover:underline" onClick={() => this.props.updateMessage('Please log in to see item details')}><h1>{item.title}</h1></button>}
           <div>{item.condition}</div>
@@ -24,7 +24,7 @@ export default class ItemsList extends Component {
     ))
 
     return (
-      <div className="mt-24">
+      <div className="mt-12">
         {this.props.message && (
           <div className="flex justify-center my-4">
             <div className="w-6/12 bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative" role="alert">

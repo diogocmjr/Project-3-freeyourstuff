@@ -15,7 +15,7 @@ export default function WishList(props) {
 
   return (
     <div>
-      <div className="text-2xl flex px-10 m-10 justify-start align-text-top flex-wrap gap-3">My wish list</div>
+      <div className="text-2xl flex px-10 m-10 justify-start align-text-top flex-wrap gap-3">My Wishlist</div>
       <div className="flex px-10 m-10 justify-start align-text-top flex-wrap gap-3">
         {items}
       </div>

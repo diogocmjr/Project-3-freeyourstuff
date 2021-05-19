@@ -18,7 +18,7 @@ require("./config")(app);
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const DB_URL = 'mongodb://localhost/projector'
+const DB_URL = process.env.MONGODB_URI || "mongodb://localhost/projector";
 
 app.use(
   session({
@@ -88,6 +88,13 @@ const person = require('./routes/person');
 app.use('/api/person', person);
 
 app.use('/api', require('./routes/cloudinary'));
+
+const path = require('path');
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.use((req, res) => {
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
