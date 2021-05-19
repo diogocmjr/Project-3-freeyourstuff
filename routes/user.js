@@ -4,7 +4,7 @@ const Item = require('../models/Item');
 
 //get user profile
 router.get('/:id', (req, res, next) => {
-  User.findById(req.params.id)
+  User.findById(req.params.id).populate('favourites')
     .then(user => {
       if (!user) {
         res.status(404);
