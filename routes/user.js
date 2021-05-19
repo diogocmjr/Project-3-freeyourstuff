@@ -38,11 +38,23 @@ router.put('/:id', (req, res, next) => {
   .catch(err => res.json(err));
 });
 
-//update user favourites
+//add item to favourite
 router.put('/:id/favourites', (req, res, next) => {
   const { favourites } = req.body;
   User.findByIdAndUpdate(req.params.id, {
     $push: { favourites: favourites }
+    }, { new: true })
+  .then(user => {
+    res.status(200).json(user);
+  })
+  .catch(err => res.json(err));
+});
+
+//add item to favourite
+router.put('/:id/favourites/remove', (req, res, next) => {
+  const { favourites } = req.body;
+  User.findByIdAndUpdate(req.params.id, {
+    $pull: { favourites: favourites }
     }, { new: true })
   .then(user => {
     res.status(200).json(user);
