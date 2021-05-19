@@ -11,7 +11,6 @@
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\""
   },
   "dependencies": {
-    "@craco/craco": "^6.1.2",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.25.1",
     "concurrently": "^6.1.0",
@@ -29,9 +28,6 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "nodemon": "^2.0.7",
-    "postcss": "^7.0.35",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
+    "nodemon": "^2.0.7"
   }
 }

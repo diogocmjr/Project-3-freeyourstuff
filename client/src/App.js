@@ -113,7 +113,7 @@ class App extends React.Component {
         />
 
         <Route exact path='/items/:id'
-          render={props => <ItemDetails user={this.state.user} getData={this.getData} updateMessage={this.updateMessage} {...props} />}
+          render={props => <ItemDetails user={this.state.user} getUser={this.getUser} getData={this.getData} updateMessage={this.updateMessage} {...props} />}
         />
 
         <ProtectedRoute

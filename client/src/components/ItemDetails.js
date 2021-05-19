@@ -13,7 +13,8 @@ export default class ItemDetails extends Component {
     imgUrl: '',
     owner: {},
     status: '',
-    location: {}
+    location: {},
+    favourite: false
   }
 
   getData = () => {
@@ -64,7 +65,25 @@ export default class ItemDetails extends Component {
       favourites: itemId
     })
     .then(response => {
-      console.log(response.data)
+      this.setState({
+        favourite: true
+      })
+      this.props.getUser()
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  removeFromFavourites = () => {
+    const itemId = this.state.item._id
+    axios.put(`/api/user/${this.props.user._id}/favourites/remove`, {
+      favourites: itemId
+    })
+    .then(response => {
+      this.setState({
+        favourite: false
+      })
       this.props.getUser()
     })
     .catch(err => {
@@ -74,6 +93,13 @@ export default class ItemDetails extends Component {
 
   componentDidMount() {
     this.getData();
+    this.props.user.favourites.forEach(favourite => {
+      if (favourite._id === this.props.match.params.id) {
+        this.setState({
+          favourite: true
+        })
+      }
+    })
   }
 
   render() {
@@ -183,15 +209,27 @@ export default class ItemDetails extends Component {
                 )}
             </div>
           ) : 
-            (<div className="flex-row py-3">
+            !this.state.favourite ?
+            <div className="flex-row py-3">
               <button 
                 className="group relative w-40 justify-center py-2 mx-2 px-4 sm:my-1 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                onClick={() => this.addToFavourites()}>Add to favourites</button>
+                onClick={() => this.addToFavourites()}>Add to wish list</button>
               {/* This button should be a link to the send message component */}
               <button
                 className="group relative w-40 justify-center py-2 mx-2 px-4 sm:my-1 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >Contact owner</button>
-            </div>)}
+            </div> 
+            :
+            <div className="flex-row py-3">
+              <button 
+                className="group relative w-50 justify-center py-2 mx-2 px-4 sm:my-1 border border-indigo-600 text-sm font-medium rounded-md text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                onClick={() => this.removeFromFavourites()}>Remove from wish list</button>
+              {/* This button should be a link to the send message component */}
+              <button
+                className="group relative w-40 justify-center py-2 mx-2 px-4 sm:my-1 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >Contact owner</button>
+            </div>
+            }
         </div>
       </>
     )
