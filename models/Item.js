@@ -11,7 +11,7 @@ const itemSchema = new Schema({
   },
   condition: {
     type: String,
-    enum: ['New', 'As New', 'Used - Good', 'Used - Fair'],
+    enum: ['New', 'As New', 'Used - Good', 'Used - Fair', 'N/A'],
     default: null
   },
   status: {
