@@ -83,7 +83,8 @@ export default class ItemDetails extends Component {
           
           <div className="col-start-1 row-start-3 space-y-1 px-4 py-4">
             <div className="flex items-center text-black text-sm font-medium">
-            <Link to={`/profile/${this.state.owner._id}`}><div className="mr-2 bg-gray-100">Given by <span className="underline">{this.state.owner.username}</span></div></Link>
+            <Link to={`/profile/${this.state.owner._id}`} className="mr-2 bg-gray-100">Given by <span className="underline">{this.state.owner.username}</span></Link>
+            {/* <Link to={`/profile/${this.state.owner._id}`}><div className="mr-2 bg-gray-100">Given by <span className="underline">{this.state.owner.username.charAt(0).toUpperCase() + this.state.owner.username.slice(1)}</span></div></Link> */}
             </div>
             <div className="flex flex-row text-sm">
               <span>{this.state.owner.phoneNumber}</span>

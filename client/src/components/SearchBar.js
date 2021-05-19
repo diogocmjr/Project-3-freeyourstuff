@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { SelectorIcon } from '@heroicons/react/solid'
+
 
 export default class SearchBar extends Component {
   render() {
@@ -10,8 +12,8 @@ export default class SearchBar extends Component {
           </div>
           <div className="relative flex lg:flex-row sm:flex-col md:flex-col flex-col text-left w-auto px-4">
             <div className="px-2 my-1">
-              <select className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="category" id="category" value={this.props.category} onChange={(e) => {this.props.handleChange(e)}}>
-                <option value='Category'> All Categories </option>
+              <select className="flex justify-center w-full rounded-md border border-gray-300 px-4 shadow-sm py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="category" id="category" value={this.props.category} onChange={(e) => {this.props.handleChange(e)}}>
+                <option value="Category"> All Categories </option>
                 <option value="Books">Books</option>
                 <option value="Clothing & Accessories">Clothing & Accessories</option>
                 <option value="Electronics">Electronics</option>

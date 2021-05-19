@@ -7,8 +7,8 @@ export default function OfferedItems(props) {
     <div key={item._id}>
       <div>
       <Link to={`/items/${item._id}`}><img className="object-cover justify-center p-1 h-25 w-25 md:h-40 md:w-40 rounded hover:opacity-70" src={item.imgUrl} alt={item.title}/></Link>
-      <h1 className="text-lg mt-1 hover:underline"><Link to={`/items/${item._id}`}>{item.title}</Link></h1>
-      <div>{item.condition}</div>
+      <h1 className="text-bg mt-1 hover:underline"><Link to={`/items/${item._id}`}>{item.title}</Link></h1>
+      <div className="text-sm">{item.condition}</div>
       </div>
     </div>
     ))
@@ -16,9 +16,9 @@ export default function OfferedItems(props) {
   const username = props.user.username;
 
   return (
-    <div>
-      {username && <div className="text-2xl flex py-2 px-3 sm:px-10 m-3 sm:m-5 justify-center sm:justify-start align-text-top flex-wrap gap-3">{username.charAt(0).toUpperCase() + props.user.username.slice(1)}'s Stuff</div>}
-      <div className="flex py-2 px-3 sm:px-10 m-3 sm:m-5 justify-around align-text-top flex-wrap gap-8">
+    <div className="flex flex-col mx-2 my-2">
+      {username && <div className="text-2xl flex py-1 px-3 sm:px-10 m-3 sm:m-5 justify-center lg:justify-start">{username.charAt(0).toUpperCase() + props.user.username.slice(1)}'s Stuff</div>}
+      <div className="flex py-1 px-3 sm:px-10 m-3 sm:m-5 justify-around align-text-top text-center flex-wrap gap-8">
         {items}
       </div>
     </div>
