@@ -57,11 +57,15 @@ class App extends React.Component {
     this.setState({
       message: message
     })
+    setTimeout(
+      () => this.setState({ message: '' }), 
+      3000
+    );
   }
 
   removeMessage = () => {
     this.setState({
-      message: ''
+      message: '',    
     })
   }
 

@@ -31,7 +31,7 @@ export default function Dashboard(props) {
 
         <div className="flex flex-col">
           <div>
-            <OfferedItems user={props.user} items={props.items} condition={props.condition} status={props.status} category={props.category}/>
+            <OfferedItems dashboard={true} user={props.user} items={props.items} condition={props.condition} status={props.status} category={props.category}/>
           </div>
           <div>
             <WishList user={props.user} items={props.items} condition={props.condition} status={props.status} category={props.category}/>

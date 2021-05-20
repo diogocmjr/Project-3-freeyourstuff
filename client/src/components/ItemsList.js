@@ -28,7 +28,7 @@ export default class ItemsList extends Component {
       <div className="mt-44 lg:mt-12">
         {this.props.message && (
           <div className="flex justify-center my-4">
-            <div className="w-6/12 bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 mt-10 rounded relative" role="alert">
+            <div className="w-6/12 bg-yellow-100 border border-yellow-400 text-yellow-700 px-5 py-3 mt-10 rounded relative" role="alert">
               <strong className="font-bold">{this.props.message}</strong>
               <button onClick={() => this.props.removeMessage()} class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-3 mr-4 outline-none focus:outline-none">
                 <span>×</span>

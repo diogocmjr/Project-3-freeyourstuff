@@ -15,7 +15,7 @@ export default function OfferedItems(props) {
 
   return (
     <div className="flex flex-col mx-2 my-2">
-      {username && <div className="text-2xl flex py-1 px-3 sm:px-10 m-3 sm:m-5 justify-center lg:justify-start">{username.charAt(0).toUpperCase() + props.user.username.slice(1)}'s Stuff</div>}
+       {props.dashboard ? <div className="text-2xl flex py-1 px-3 sm:px-10 m-3 sm:m-5 justify-center lg:justify-start">My Stuff:</div> : username && <div className="text-2xl flex py-1 px-3 sm:px-10 m-3 sm:m-5 justify-center lg:justify-start">{username.charAt(0).toUpperCase() + props.user.username.slice(1)}'s Stuff</div>}
       <div className="flex py-1 px-3 sm:px-10 m-3 sm:m-5 justify-around align-text-top text-center flex-wrap gap-8">
         {items}
       </div>

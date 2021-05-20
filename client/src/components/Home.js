@@ -16,6 +16,10 @@ export default class Home extends Component {
     this.setState({
       message: message
     })
+    setTimeout(
+      () => this.setState({ message: '' }), 
+      3000
+    );
   }
 
   removeMessage = () => {
