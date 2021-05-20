@@ -20,7 +20,7 @@ class App extends React.Component {
 
   state = {
     user: this.props.user,
-    items: [],
+    items: '',
     message: ''
   }
 

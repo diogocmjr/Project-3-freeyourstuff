@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { SelectorIcon } from '@heroicons/react/solid'
-
 
 export default class SearchBar extends Component {
   render() {
@@ -42,6 +40,9 @@ export default class SearchBar extends Component {
                 <option value='Available'>Available</option>
                 <option value="Reserved">Reserved</option>
               </select>
+            </div>
+            <div className="px-2 my-1">
+              <button onClick={() => this.props.toggleMap()} className="flex text-gray-100 bg-gray-600 hover:bg-gray-100 hover:text-gray-700 px-3 py-2 rounded-md font-medium mr-5" type="button">Map</button>
             </div>
           </div>
         </div>

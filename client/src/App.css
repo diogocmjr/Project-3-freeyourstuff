@@ -21,4 +21,15 @@
   font-size: 25px;
 }
 
+.marker-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.marker-btn img {
+  height:40px;
+  width:40px;
+}
+
 

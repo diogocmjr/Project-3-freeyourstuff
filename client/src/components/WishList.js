@@ -3,8 +3,6 @@ import { Link }from 'react-router-dom'
 
 export default function WishList(props) {
 
-  console.log('user favourites', props.user.favourites)
-
   const items = props.user.favourites.map(item => (
     <div key={item._id}>
       <Link to={`/items/${item._id}`}><img className="object-cover h-40 w-40 rounded hover:opacity-70" src={item.imgUrl} alt={item.title}/></Link>
