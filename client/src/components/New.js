@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import service from '../services/service';
-import mapboxgl from '!mapbox-gl'
+import mapboxgl from 'mapbox-gl'
 
 import mbxClient from '@mapbox/mapbox-sdk'
 import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
