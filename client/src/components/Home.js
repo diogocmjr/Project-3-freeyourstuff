@@ -71,7 +71,7 @@ export default class Home extends Component {
         <SearchBar updateMessage={this.updateMessage} removeMessage={this.removeMessage} user={this.props.user} handleChange={this.handleChange} handleSearch={this.handleSearch} query={this.state.query} condition={this.state.condition} status={this.state.status} category={this.state.category} toggleMap={this.toggleMap} map={this.state.map}/>
         {(!this.state.query && this.state.condition === 'Condition' && this.state.status === 'Status' && this.state.category === 'Category' && !this.props.user) ? <Welcome /> : 
           !this.state.map ? <ItemsList updateMessage={this.updateMessage} removeMessage={this.removeMessage} message={this.state.message} user={this.props.user} filteredItems={filteredItems}/> : 
-          <Map filteredItems={filteredItems}/>}
+          <Map filteredItems={filteredItems} user={this.props.user}/>}
       </>
     )
   }

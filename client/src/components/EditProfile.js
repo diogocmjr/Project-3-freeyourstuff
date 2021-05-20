@@ -90,7 +90,6 @@ export default class EditProfile extends Component {
   }
 
   render() {
-    console.log('state', this.state)
     return (
       <div className="flex-col">
         
