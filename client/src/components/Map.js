@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
@@ -47,7 +48,7 @@ export default function Map(props) {
                 e.preventDefault();
                 setSelectedItem(item);
               }}>
-                <img src="/mapbox-icon.png" alt="" />
+                <img src="/icon.png" alt="" />
               </button>
             </Marker>
           ))}
@@ -61,9 +62,10 @@ export default function Map(props) {
             }}
           >
             <div>
-              <h2>{selectedItem.title}</h2>
-              <p>{selectedItem.description}</p>
-              <p>{selectedItem.owner.username}</p>
+              <img className="object-cover h-40 w-40 rounded hover:opacity-70" src={selectedItem.imgUrl} alt={selectedItem.title}/>
+              <h2 className="text-center">{selectedItem.title}</h2>
+              <p className="text-center">{selectedItem.condition}</p>
+              <p className="text-center">{selectedItem.owner.username}</p>
             </div>
           </Popup>
         )}
