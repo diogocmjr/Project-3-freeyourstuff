@@ -35,14 +35,14 @@ export default class SearchBar extends Component {
               </select>
             </div>
             <div className="px-2 my-1">
-              <select className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 sm:px-4 py-1 sm:py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="status" id="status" value={this.props.status} onChange={(e) => {this.props.handleChange(e)}}>
+              <select className="flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 sm:px-4 py-1.5 sm:py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" name="status" id="status" value={this.props.status} onChange={(e) => {this.props.handleChange(e)}}>
                 <option value='Status'>Any Status</option>
                 <option value='Available'>Available</option>
                 <option value="Reserved">Reserved</option>
               </select>
             </div>
             <div className="flex justify-center px-2 lg:my-1 my-2">
-              <button onClick={() => this.props.toggleMap()} className="flex text-gray-100 bg-gray-600 hover:bg-gray-100 hover:text-gray-700 lg:ml-8 px-3.5 py-1.5 rounded-md font-medium" type="button">Map</button>
+              <button onClick={() => this.props.toggleMap()} className="flex text-gray-100 bg-gray-600 hover:bg-gray-100 hover:text-gray-700 lg:ml-8 px-3.5 py-1.5 rounded-md font-medium" type="button">{this.props.map ? 'List' : 'Map'}</button>
             </div>
           </div>
         </div>

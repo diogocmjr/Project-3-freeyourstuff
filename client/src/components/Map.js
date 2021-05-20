@@ -9,7 +9,7 @@ export default function Map(props) {
     latitude: 52.53,
     longitude: 13.36,
     width: '100vw',
-    height: 'calc(100vh - 134px)',
+    height: 'calc(100vh - 142px)',
     zoom: 10
   }); 
 
@@ -18,7 +18,7 @@ export default function Map(props) {
   const accessToken = "pk.eyJ1IjoidHJhbnNpcmVudCIsImEiOiJja255bXRtZGowbHF0MnBvM3U4d2J1ZG5vIn0.IVcxB9Xw6Tcc8yHGdK_0zA"
 
   return (
-    <div className="flex justify-center" style={{marginTop:'67px', paddingTop: '20px'}}>
+    <div className="flex justify-center" style={{marginTop:'78px'}}>
       <ReactMapGL 
         ref={mapRef}
         {...viewport} 
@@ -57,12 +57,13 @@ export default function Map(props) {
           <Popup 
             latitude={selectedItem.coordinates[1]} 
             longitude={selectedItem.coordinates[0]}
+            closeOnClick={false}
             onClose={() => {
               setSelectedItem(null)
             }}
           >
             <div>
-              <img className="object-cover h-40 w-40 rounded hover:opacity-70" src={selectedItem.imgUrl} alt={selectedItem.title}/>
+              {props.user ? <Link to={`/items/${selectedItem._id}`}><img className="object-cover h-40 w-40 rounded hover:opacity-70" src={selectedItem.imgUrl} alt={selectedItem.title}/></Link> : <img className="object-cover h-40 w-40 rounded hover:opacity-70" src={selectedItem.imgUrl} alt={selectedItem.title}/>}
               <h2 className="text-center">{selectedItem.title}</h2>
               <p className="text-center">{selectedItem.condition}</p>
               <p className="text-center">{selectedItem.owner.username}</p>
