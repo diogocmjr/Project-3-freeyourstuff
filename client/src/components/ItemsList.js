@@ -19,7 +19,7 @@ export default class ItemsList extends Component {
     ))
 
     return (
-      <div className="mt-44 lg:mt-12">
+      <div className="mt-56 lg:mt-12">
         {this.props.message && (
           <div className="flex justify-center my-4">
             <div className="w-6/12 bg-yellow-100 border border-yellow-400 text-yellow-700 px-5 py-3 mt-10 rounded relative" role="alert">

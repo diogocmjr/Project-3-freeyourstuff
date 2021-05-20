@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react'
 import OfferedItems from './OfferedItems'
 import WishList from './WishList'
@@ -8,6 +7,10 @@ export default function Dashboard(props) {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+  
+  if (!props.items) {
+    return (<> </>)
+  }
 
   return (
     <div>     

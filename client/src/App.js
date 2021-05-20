@@ -83,6 +83,7 @@ class App extends React.Component {
           getUser={this.getUser}
           items={this.state.items}
           component={Dashboard}
+          getData={this.getData}
           redirectPath='/login'
         />
 

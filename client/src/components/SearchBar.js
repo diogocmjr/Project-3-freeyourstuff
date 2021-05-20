@@ -41,8 +41,8 @@ export default class SearchBar extends Component {
                 <option value="Reserved">Reserved</option>
               </select>
             </div>
-            <div className="px-2 my-1">
-              <button onClick={() => this.props.toggleMap()} className="flex text-gray-100 bg-gray-600 hover:bg-gray-100 hover:text-gray-700 px-3 py-2 rounded-md font-medium mr-5" type="button">Map</button>
+            <div className="flex justify-center px-2 lg:my-1 my-2">
+              <button onClick={() => this.props.toggleMap()} className="flex text-gray-100 bg-gray-600 hover:bg-gray-100 hover:text-gray-700 lg:ml-8 px-3.5 py-1.5 rounded-md font-medium" type="button">Map</button>
             </div>
           </div>
         </div>
