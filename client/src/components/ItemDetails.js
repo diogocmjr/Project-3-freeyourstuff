@@ -131,7 +131,6 @@ export default class ItemDetails extends Component {
           <div className="col-start-1 row-start-3 space-y-1 px-4 py-4">
             <div className="flex items-center text-black text-sm font-medium">
             <Link to={`/profile/${this.state.owner._id}`} className="mr-2 bg-gray-100">Given by <span className="underline">{this.state.owner.username}</span></Link>
-            {/* <Link to={`/profile/${this.state.owner._id}`}><div className="mr-2 bg-gray-100">Given by <span className="underline">{this.state.owner.username.charAt(0).toUpperCase() + this.state.owner.username.slice(1)}</span></div></Link> */}
             </div>
             <div className="flex flex-col text-sm">
               {this.state.owner.phoneNumber && (
@@ -151,12 +150,6 @@ export default class ItemDetails extends Component {
           <div className="relative col-span-1 row-span-1 md:col-span-1">
             <img src={this.state.imgUrl} alt={this.state.title} className="absolute inset-0 w-full h-full object-cover bg-gray-100 sm:rounded-lg" />
           </div>
-          {/* <div className="relative hidden md:block">
-            <img src={this.state.imgUrl} alt={this.state.title} className="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
-          </div>
-          <div className="relative hidden md:block">
-            <img src={this.state.imgUrl} alt={this.state.title} className="absolute inset-0 w-full h-full object-cover rounded-lg bg-gray-100" />
-          </div> */}
         </div>
       </div>
           {this.props.user !== null && this.state.owner._id === this.props.user._id ? (

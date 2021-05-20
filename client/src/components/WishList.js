@@ -1,9 +1,7 @@
 import React from 'react'
-import { Link }from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function WishList(props) {
-
-  console.log('user favourites', props.user.favourites)
 
   const items = props.user.favourites.map(item => (
     <div key={item._id}>
@@ -15,7 +13,7 @@ export default function WishList(props) {
 
   return (
     <div>
-      <div className="text-2xl flex px-10 m-10 justify-start align-text-top flex-wrap gap-3">My Wishlist</div>
+      <div className="text-2xl flex py-1 px-3 sm:px-10 m-3 sm:m-5 justify-center lg:justify-start">My Wishlist</div>
       <div className="flex px-10 m-10 justify-start align-text-top flex-wrap gap-3">
         {items}
       </div>

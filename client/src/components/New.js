@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import service from '../services/service';
 
+import mbxClient from '@mapbox/mapbox-sdk'
+import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
+
+const accessToken = 'pk.eyJ1IjoidHJhbnNpcmVudCIsImEiOiJja255bXRtZGowbHF0MnBvM3U4d2J1ZG5vIn0.IVcxB9Xw6Tcc8yHGdK_0zA'
+const baseClient = mbxClient({ accessToken: accessToken })
+const geocodingClient = mbxGeocoding(baseClient)
+
 export default class New extends Component {
 
   state = {
@@ -10,21 +17,40 @@ export default class New extends Component {
     description: '',
     status: '',
     owner: this.props.user._id,
+    coordinates: '',
     condition: '',
-    imgUrl: 'http://www.ub.edu/grop/wp-content/uploads/2019/07/placeholder.png'
+    imgUrl: 'https://res.cloudinary.com/dvzi6gpqd/image/upload/v1621455478/thing-gallery/placeholder_g0qzei.png'
+  }
+
+  componentDidMount() {
+    if (this.props.user.location) {
+      const { street, number, postCode, city } = this.props.user.location
+      geocodingClient.forwardGeocode({
+        query: `${street} ${number} ${city}, ${postCode}`,
+        autocomplete: false,
+        limit: 1
+      }) 
+      .send()
+      .then(response => {
+        this.setState({
+          coordinates: response.body.features[0].center
+        })
+      })
+    }
   }
 
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.imgUrl !== '') {
-      const { title, category, description, condition, imgUrl } = this.state;
+      const { title, category, description, condition, imgUrl, coordinates } = this.state;
       axios.post('/api/items/new', {
         title,
         category,
         description,
         condition,
         owner: this.state.owner,
-        imgUrl
+        imgUrl,
+        coordinates
       })
       .then(response => {
         this.setState({
@@ -35,7 +61,7 @@ export default class New extends Component {
           imgUrl: ''
         })
         this.props.getData();
-        this.props.history.push('/');
+        this.props.history.push('/dashboard');
       })
     }
   }

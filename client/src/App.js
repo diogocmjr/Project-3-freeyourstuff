@@ -20,7 +20,7 @@ class App extends React.Component {
 
   state = {
     user: this.props.user,
-    items: [],
+    items: '',
     message: ''
   }
 
@@ -57,11 +57,15 @@ class App extends React.Component {
     this.setState({
       message: message
     })
+    setTimeout(
+      () => this.setState({ message: '' }), 
+      3000
+    );
   }
 
   removeMessage = () => {
     this.setState({
-      message: ''
+      message: '',    
     })
   }
 
@@ -79,6 +83,7 @@ class App extends React.Component {
           getUser={this.getUser}
           items={this.state.items}
           component={Dashboard}
+          getData={this.getData}
           redirectPath='/login'
         />
 

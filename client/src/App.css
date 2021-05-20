@@ -11,14 +11,15 @@
   padding: 0 40px;
 }
 
-.welcome h1 {
-  font-size: 50px;
-  font-weight: 700;
-  line-height: 60px;
+.marker-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.welcome h3 {
-  font-size: 25px;
+.marker-btn img {
+  height:40px;
+  width:40px;
 }
 
 

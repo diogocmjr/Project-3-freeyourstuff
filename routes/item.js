@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Item = require('../models/Item');
 
 router.post('/new', (req, res, next) => {
-  const { title, description, imgUrl, owner, condition, status, postedDate, category } = req.body;
+  const { title, description, imgUrl, owner, condition, status, postedDate, category, coordinates } = req.body;
   console.log('back end route', title, category, description, condition, imgUrl, owner)
   Item.create({
     title,
@@ -12,7 +12,8 @@ router.post('/new', (req, res, next) => {
     condition,
     status,
     postedDate,
-    category
+    category,
+    coordinates
   })
     .then(item => {
       console.log('succesful', item)

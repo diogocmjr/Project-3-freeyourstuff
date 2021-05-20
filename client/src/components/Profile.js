@@ -39,7 +39,7 @@ export default class Profile extends Component {
         </div>
 
         <div>
-        <OfferedItems user={this.state.person} items={this.props.items} condition={this.props.condition} status={this.props.status} category={this.props.category}/>
+        <OfferedItems dashboard={false} user={this.state.person} items={this.props.items} condition={this.props.condition} status={this.props.status} category={this.props.category}/>
         </div>
       </div>
       </div>

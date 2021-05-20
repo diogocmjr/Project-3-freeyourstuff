@@ -4,7 +4,10 @@ const { Schema, model } = require("mongoose");
 const itemSchema = new Schema({
   title: String,
   description: String,
-  imgUrl: String,
+  imgUrl: {
+    type: String,
+    default: 'https://res.cloudinary.com/dvzi6gpqd/image/upload/v1621455478/thing-gallery/placeholder_g0qzei.png'
+  },
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -19,6 +22,7 @@ const itemSchema = new Schema({
     enum: ['Available', 'Reserved'],
     default: 'Available'
   },
+  coordinates: Array,
   postedDate: Date,
   category: {
     type: String,
