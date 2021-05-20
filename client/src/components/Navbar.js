@@ -22,9 +22,9 @@ export default function Navbar(props) {
         <div className="relative flex items-center justify-between h-16">
           <div className="flex-1 flex items-center sm:items-stretch justify-start">
             <div className="flex-shrink-0 flex items-center">
-            <Link to='/'><img className="ml-2 h-9 w-9"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                alt="Workflow">
+            <Link to='/'><img className="h-7 sm:h-9"
+                src="/fys_logo.svg"
+                alt="logo">
                </img> </Link>
             </div>
             </div>
