@@ -9,12 +9,24 @@ export default class EditProfile extends Component {
     imgUrl: this.props.user.imgUrl,
     email: this.props.user.email || '',
     phoneNumber: this.props.user.phoneNumber || '',
-    street: this.props.user.location.street || '',
-    number: this.props.user.location.number || '',
-    city: this.props.user.location.city || '',
-    country: this.props.user.location.country || '',
-    postCode: this.props.user.location.postCode || '',
+    street: '',
+    number: '',
+    city: '',
+    country: '',
+    postCode: '',
     popup: false
+  }
+
+  componentDidMount() {
+    if (this.props.user.location) {
+      this.setState({
+        street: this.props.user.location.street,
+        number: this.props.user.location.number,
+        city: this.props.user.location.city,
+        country: this.props.user.location.country,
+        postCode: this.props.user.location.postCode
+      })
+    }
   }
 
   handlePopup = () => {
