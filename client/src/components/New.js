@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import service from '../services/service';
-import mapboxgl from 'mapbox-gl'
 
 import mbxClient from '@mapbox/mapbox-sdk'
 import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoidHJhbnNpcmVudCIsImEiOiJja255bXRtZGowbHF0MnBvM3U4d2J1ZG5vIn0.IVcxB9Xw6Tcc8yHGdK_0zA'
-const baseClient = mbxClient({ accessToken : mapboxgl.accessToken })
+const accessToken = 'pk.eyJ1IjoidHJhbnNpcmVudCIsImEiOiJja255bXRtZGowbHF0MnBvM3U4d2J1ZG5vIn0.IVcxB9Xw6Tcc8yHGdK_0zA'
+const baseClient = mbxClient({ accessToken: accessToken })
 const geocodingClient = mbxGeocoding(baseClient)
 
 export default class New extends Component {
