@@ -53,16 +53,16 @@ class App extends React.Component {
     .catch(err => console.log(err))
   }
 
-  // getUser = () => {
-  //   console.log('get user triggered')
-  //   axios.get(`/api/user/${this.props.user._id}`)
-  //     .then(response => {
-  //       this.setState({
-  //         user: response.data
-  //       })
-  //     })
-  //     .catch(err => console.log(err))
-  // }
+  getUserFull = () => {
+    console.log('get user triggered')
+    axios.get(`/api/user/${this.props.user._id}`)
+      .then(response => {
+        this.setState({
+          user: response.data
+        })
+      })
+      .catch(err => console.log(err))
+  }
 
   updateMessage = (message) => {
     this.setState({
@@ -94,6 +94,7 @@ class App extends React.Component {
           items={this.state.items}
           component={Dashboard}
           getData={this.getData}
+          getUserFull={this.getUserFull}
           redirectPath='/login'
         />
 
