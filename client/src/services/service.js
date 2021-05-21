@@ -1,7 +1,7 @@
 import axios from 'axios';
  
 const service = axios.create({
-  baseURL: 'http://localhost:5005/api',
+  baseURL: 'https://freeyourstuff.herokuapp.com/api' || 'http://localhost:5005/api',
   withCredentials: true // => you might need this when having the users in the app
 });
  
