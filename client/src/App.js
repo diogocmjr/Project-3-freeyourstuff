@@ -24,10 +24,6 @@ class App extends React.Component {
     message: ''
   }
 
-  setUser = user => {
-    this.setState({ user })
-  }
-
   getData = () => {
     axios.get('/api/items')
       .then(response => {
@@ -43,15 +39,30 @@ class App extends React.Component {
     this.getUser();
   }
 
-  getUser = () => {
-    axios.get(`/api/user/${this.props.user._id}`)
-      .then(response => {
-        this.setState({
-          user: response.data
-        })
-      })
-      .catch(err => console.log(err))
+  setUser = user => {
+    this.setState({ user });
   }
+
+  getUser = () => {
+    axios.get('/api/auth/loggedin')
+    .then(response => {
+      this.setState({
+        user: response.data
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
+  // getUser = () => {
+  //   console.log('get user triggered')
+  //   axios.get(`/api/user/${this.props.user._id}`)
+  //     .then(response => {
+  //       this.setState({
+  //         user: response.data
+  //       })
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
   updateMessage = (message) => {
     this.setState({
@@ -80,7 +91,6 @@ class App extends React.Component {
           removeMessage={this.removeMessage} 
           message={this.state.message}
           updateMessage={this.updateMessage}
-          getUser={this.getUser}
           items={this.state.items}
           component={Dashboard}
           getData={this.getData}

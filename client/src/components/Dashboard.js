@@ -6,7 +6,6 @@ export default function Dashboard(props) {
   
   useEffect(() => {
     window.scrollTo(0, 0);
-    props.getUser();
   }, [])
   
   if (!props.items) {

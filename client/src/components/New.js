@@ -157,7 +157,7 @@ export default class New extends Component {
             <option value="New">New</option>
             <option value="As New">As New</option>
             <option value="Used - Good">Used - Good</option>
-            <option value="Used - Fair">User - Fair</option>
+            <option value="Used - Fair">Used - Fair</option>
             <option value="N/A">N/A</option>
           </select>
         </div>
